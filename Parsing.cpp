@@ -1,15 +1,27 @@
 #include "Parsing.hpp"
 
-
-void Parsing::IsValidNumeric(std::string const &str) 
+void Parsing:: IsValidNumeric(const std::string &str) 
 {
-     for (size_t i = 0; i < str.size(); ++i) 
-     {
-        char c = str[i];
-        if (!(isdigit(c) || i == 0))
-            throw std::runtime_error("\33[1;31mError: Only digits allowed\33[1;31m");
+        if (str.empty()) 
+        {
+            throw std::runtime_error("\33[1;31mError: Empty string!\33[1;31m");
+        }
+        size_t i = 0;
+        if (str[i] == '+') 
+            i++;
+        for (; i < str.size(); ++i) 
+        {
+            if (!isdigit(str[i])) 
+            {
+                throw std::runtime_error("\33[1;31mError: Not a valid numeric value\33[0m");
+            }
+        }
+        int value = atoi(str.c_str());
+        if (value < 1 || value > 65535) 
+        {
+            throw std::out_of_range("\33[1;31mError: Value out of range, only from 0 to 65535!\33[1;31m");
+        }
     }
-}
 
 int Parsing::ItExists(User *user)
 {
@@ -21,3 +33,4 @@ int Parsing::ItExists(User *user)
     }
     return 0;
 }
+
