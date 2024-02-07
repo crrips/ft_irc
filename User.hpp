@@ -26,7 +26,10 @@ public:
     User();
     ~User();
 
-    User(std::string const &hostname, std::string const &nickname, std::string const &username, int fd);
+    bool _Quit;
+    std::string _Buffer;
+
+    User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username);
 
     std::string getHostName() const;
     std::string getNickname() const;

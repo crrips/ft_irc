@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     if(argc != 3)
         std::cout<<"\33[1;31mErrror: Argument error!\33[1;0m"<<std::endl;
 
-    User *user = new User("testHost", "testNick", "testUser", 1);
+    User *user = new User(1, "testHost", "testNick", "testUser");
     Channel *channel = new Channel("testChannel", "testPass", user);
     Commands *invite = new Commands();
 

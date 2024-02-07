@@ -10,7 +10,7 @@ User::~User()
 
 }
 
-User::User(std::string const &hostname, std::string const &nickname, std::string const &username, int fd) : _HostName(hostname), _Nickname(nickname), _UserName(username), _Registration(true), _isPass(true), _FileDescriptor(fd)
+User::User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username) : _HostName(hostname), _Nickname(nickname), _UserName(username), _Registration(true), _isPass(true), _FileDescriptor(fd)
 {
 
 }
