@@ -15,11 +15,6 @@ User::~User()
 
 }
 
-User::User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username) : _HostName(hostname), _Nickname(nickname), _UserName(username), _Registration(true), _isPass(true), _FileDescriptor(fd)
-{
-
-}
-
 std::string User::getHostName() const
 {
     return (_HostName);
@@ -91,7 +86,7 @@ void User::ReplyMsg(const std::string &msg)
 
 void User::Registration()
 {
-    if (_isPass && !_UserName.empty() && !_Name.empty() && !_Nickname.empty())
+    if (_Pass && !_UserName.empty() && !_Name.empty() && !_Nickname.empty())
     {
         _Registration = true;
         ReplyMsg(RPL_WELCOME(_Nickname));

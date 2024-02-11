@@ -13,14 +13,14 @@ class Channel;
 class User
 {
 private:
+    int _FileDescriptor;
     std::vector<Channel *> _Channel;
     std::string _HostName;
     std::string _Nickname;
     std::string _UserName;
     std::string _Name;
     bool _Registration;
-    bool _isPass;
-    int _FileDescriptor;
+    bool _Pass;
 
 public:
     User();
@@ -29,8 +29,6 @@ public:
 
     bool _Quit;
     std::string _Buffer;
-
-    User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username);
 
     std::string getHostName() const;
     std::string getNickname() const;
