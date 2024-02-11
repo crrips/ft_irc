@@ -1,5 +1,10 @@
 #include "User.hpp"
 
+User::User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username) : _FileDescriptor(fd), _HostName(hostname), _Nickname(nickname), _UserName(username), _Registration(true), _Pass(true)
+{
+
+}
+
 User::User()
 {
 
@@ -118,10 +123,10 @@ void User::LeaveTheChannel(Channel *channel)
     }
 }
 
-// void User::LeaveUser(int del)
-// {
-//     (void)del;
-//     for (std::vector<Channel *>::iterator it = _Channel.begin(); it != _Channel.end(); ++it)
-//         (*it)->part(this);
-//     _Channel.clear();
-// }
+void User::DeleteUser(int del)
+{
+    (void)del;
+    for (std::vector<Channel *>::iterator it = _Channel.begin(); it != _Channel.end(); ++it)
+        (*it)->part(this);
+    _Channel.clear();
+}

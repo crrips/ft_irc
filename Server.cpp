@@ -60,7 +60,7 @@ Channel *Server::getChannel(std::string const &name)
 
 Channel *Server::AddChannel(std::string const &name, std::string const &psw)
 {
-    Channel *newChannel = new Channel(name, psw, NULL);
+    Channel* newChannel = new Channel(name, psw, NULL); // mb nuzhen user
 
     _Channel.insert(std::make_pair(name, newChannel));
     return newChannel;
@@ -135,23 +135,50 @@ void Server::RunTheServer()
                     FD_CLR(it->first, &write);
                     while (!(it->second->_Buffer).empty())
                     {
-
+                        _Commands->ToUse(it->second); 
                         // send the data to the user/s;
                     }
                     it->second->_Buffer.clear();
                     if (it->second->_Quit)
                     {
-                        // delete the user;
+                        DeleteUser(it); // delete the user;
                         break;
                     }
                 }
+                else if (FD_ISSET(it->first, &read))
+                {
+                    FD_CLR(it->first, &read);
+                    if(!TheBuffer(it))
+                        break;
+                    FD_SET(it->first, &write);
+                }
             }
         }
-        FD_ZERO(&read);
-        FD_ZERO(&write);
-        FD_ZERO(&error);
+        else
+            NewUser();
+        // FD_ZERO(&read);
+        // FD_ZERO(&write);
+        // FD_ZERO(&error);
     }
 }
+
+bool    Server::TheBuffer(std::map<int, User*>::iterator &it)
+{
+    char    buffer[1024];
+    int     value;
+
+    while ((memset(buffer, 0, 1024), value = recv(it->first, buffer, 1024, 0)) != -1)
+    {
+        if (value == 0)
+        {
+            DeleteUser(it);
+            return value;
+        }
+        it->second->_Buffer.append(buffer);
+    }
+    return value;
+}
+
 
 void Server::NewUser()
 {
@@ -176,9 +203,8 @@ void Server::NewUser()
     std::cout << "Users' connection: " << _User.size() << std::endl;
 }
 
-void Server::DeleteUser()
+void    Server::DeleteUser(std::map<int, User*>::iterator &it)
 {
-    std::map<int, User *>::iterator it;
     std::cout << "User disconnected: " << it->second->getMessage() << std::endl;
 
     // user leaves the channel: add a function in User class

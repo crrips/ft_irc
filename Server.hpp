@@ -7,13 +7,17 @@
 #include <map>
 #include <unistd.h>
 #include <fcntl.h>
+#include <cstring>
 #include "netdb.h" //for the network data operations
 
 #include "User.hpp"
 #include "Channel.hpp"
+#include "./Commands/Commands.hpp"
+
 
 class User;
 class Channel;
+class Commands;
 
 class Server
 {
@@ -27,6 +31,7 @@ class Server
         std::map<std::string, Channel*>	_Channel;
         //std::vector<User *>          _User;
         //std::vector<int>      _NewUser;
+        Commands *_Commands;
     public:
         
         Server();
@@ -43,8 +48,10 @@ class Server
         void setUser(User *user, std::string const &nickname, int fd);
         
         void NewUser();
-        void DeleteUser();
+        void DeleteUser(std::map<int, User*>::iterator &it);
         void RunTheServer();
+
+        bool TheBuffer(std::map<int, User*>::iterator &it);
 };
 
 #endif

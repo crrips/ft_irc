@@ -25,6 +25,7 @@ private:
 public:
     User();
     ~User();
+    User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username);
 
     bool _Quit;
     std::string _Buffer;
@@ -48,7 +49,7 @@ public:
     void SendMsg(const std::string &msg);   
     void JoinTheChannel(Channel *channel);  
     void LeaveTheChannel(Channel *channel); 
-    // void LeaveUser(int del);
+    void DeleteUser(int del);
 };
 
 #endif
