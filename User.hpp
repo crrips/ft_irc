@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-//#include <sys/socket.h> //works only with linux
+#include <sys/socket.h> //works only with linux
 #include "Channel.hpp"
 #include <vector>
 #include "Parsing.hpp"
@@ -27,7 +27,7 @@ public:
     
     User();
     ~User();
-    User(int fd, std::string &hostname, std::string const &nickname, std::string const &username);
+    User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username);
 
     bool _Quit;
     std::string _Buffer;
@@ -47,9 +47,9 @@ public:
     void Registration();                    
     void ReplyMsg(const std::string &msg);  
     void SendMsg(const std::string &msg);   
-    // void JoinTheChannel(Channel *channel);  
-    // void LeaveTheChannel(Channel *channel); 
-    // void DeleteUser(int del);
+    void JoinTheChannel(Channel *channel);  
+    void LeaveTheChannel(Channel *channel); 
+    void DeleteUser(int del);
 };
 
 #endif
