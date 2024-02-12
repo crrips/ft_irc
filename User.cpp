@@ -35,6 +35,11 @@ std::string User::getName() const
     return (_Name);
 }
 
+bool User::isQuit() const
+{
+    return (_Quit);
+}
+
 std::string User::getMessage() const 
 { 
     std::string result = _Nickname;
@@ -63,6 +68,16 @@ void User::setUserName(const std::string username)
 void User::setName(const std::string name)
 {
     _Name = name;
+}
+
+void User::setRegistration(bool reg)
+{
+    _Registration = reg;
+}
+
+void User::setQuit(bool status)
+{
+    _Quit = status;
 }
 
 void User::SendMsg(const std::string &msg)

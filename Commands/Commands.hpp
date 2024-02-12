@@ -28,6 +28,8 @@ class Commands
         void Invite(User *user, std::vector<std::string> obj);
         void Join(User *user, std::vector<std::string> obj);
         void Kick(User *user, std::vector<std::string> obj);
+        void Quit(User *user, std::vector<std::string> obj);
+        void UserCmd(User *user, std::vector<std::string> obj);
 
 };
 

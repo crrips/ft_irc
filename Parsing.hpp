@@ -11,10 +11,10 @@
 #define RPL_NAMREPLY(name, channel, prefix, nickname)    "353 " + name + " = " + ch + " :" + prefix + nick
 #define RPL_ENDOFNAMES(name, channel)                "366 " + name +  " " + ch + " :End of /NAMES list"
 
-#define RPL_MSG(prefix, command, target, message)   ":" + prefix + " " + command + " " + target + " :" + massage
+#define RPL_MSG(prefix, command, target, message)   ":" + prefix + " " + command + " " + target + " :" + message
 #define RPL_KICK(prefix, channel, target, message)   ":" + prefix + " KICK " + channel + " " + target + " :" + message
-#define RPL_PING(prefix, message)                   ":" + prefix + " PONG :" + massage
-#define RPL_QUIT(prefix, message)                   ":" + prefix + " QUIT :Quit: " + massage
+#define RPL_PING(prefix, message)                   ":" + prefix + " PONG :" + message
+#define RPL_QUIT(prefix, message)                   ":" + prefix + " QUIT :Quit: " + message
 #define RPL_JOIN(prefix, target)                    ":" + prefix + " JOIN " + target
 #define RPL_PART(prefix, target)                    ":" + prefix + " PART " + target
 #define RPL_MODE(prefix, channel, target)           ":" + prefix + " MODE " + channel + " " + target
