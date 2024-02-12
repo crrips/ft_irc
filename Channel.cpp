@@ -29,6 +29,11 @@ std::string Channel::getPass()
     return (_pass);
 }
 
+std::string Channel::getTopic()
+{
+    return (_topic);
+}
+
 std::vector<User *> Channel::getUsers()
 {
     return (_users);
@@ -52,6 +57,11 @@ void Channel::setName(std::string const &name)
 void Channel::setPass(std::string const &pass)
 {
     _pass = pass;
+}
+
+void Channel::setTopic(std::string const &topic)
+{
+    _topic = topic;
 }
 
 bool Channel::isAdmin(User *user)

@@ -13,6 +13,7 @@ class Channel
     private:
         std::string _name;
         std::string _pass;
+        std::string _topic;
         User *_admin;
 
         std::vector<User *> _users;
@@ -25,11 +26,13 @@ class Channel
 
         std::string getName();
         std::string getPass();
+        std::string getTopic();
         std::vector<User *> getUsers();
         User *getUser(std::string const &nickname);
 
         void setName(std::string const &name);
         void setPass(std::string const &pass);
+        void setTopic(std::string const &topic);
         
         bool isAdmin(User *user);
         bool isExist(User *user);
