@@ -35,11 +35,6 @@ std::string User::getName() const
     return (_Name);
 }
 
-bool User::isQuit() const
-{
-    return (_Quit);
-}
-
 std::string User::getMessage() const 
 { 
     std::string result = _Nickname;

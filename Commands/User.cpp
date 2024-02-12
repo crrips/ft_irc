@@ -13,8 +13,8 @@ void Commands::UserCmd(User *user, std::vector<std::string> obj)
         return ;
     }
     user->setUserName(obj[0]);
-    user->setNickname(obj[1]);
-    user->setHostName(obj[2]);
+    user->setHostName(obj[1]);
+    user->setNickname(obj[2]);
     user->setName(obj[3]);
     if (user->getNickname() != "")
     {

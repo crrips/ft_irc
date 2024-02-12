@@ -15,9 +15,9 @@ class User
 private:
     int _FileDescriptor;
     std::vector<Channel *> _Channel;
+    std::string _UserName;
     std::string _HostName;
     std::string _Nickname;
-    std::string _UserName;
     std::string _Name;
     bool _Registration;
     bool _Pass;
