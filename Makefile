@@ -3,7 +3,6 @@ NAME		= ircserv
 SRCS		= $(wildcard *.cpp) $(wildcard Commands/*.cpp)
 
 OBJ_DIR		= obj
-
 OBJS		= $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 CC			= c++

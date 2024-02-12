@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 
     Server *server = new Server(atoi(argv[1]), argv[2]);
     (void)server;
-    User *user = new User(1, "testHost", "testNick", "testUser");
+    User *user = new User(1, "testHost");
     Channel *channel = new Channel("#testChannel", "testPass", user);
     Commands *cmd = new Commands(server);
 
