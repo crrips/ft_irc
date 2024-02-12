@@ -21,14 +21,14 @@ private:
     std::string _Name;
     bool _Registration;
     bool _Pass;
-    bool _Quit;
-    std::string _Buffer;
 
 public:
     User();
     ~User();
-    User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username);
+    User(int fd, std::string const &hostname);
 
+    bool _Quit;
+    std::string _Buffer;
 
     std::string getHostName() const;
     std::string getNickname() const;

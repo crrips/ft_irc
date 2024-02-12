@@ -1,8 +1,8 @@
 #include "User.hpp"
 
-User::User(int fd, std::string const &hostname, std::string const &nickname, std::string const &username) : _FileDescriptor(fd), _HostName(hostname), _Nickname(nickname), _UserName(username), _Registration(true), _Pass(true)
+User::User(int fd, std::string const &hostname) :  _Nickname(), _UserName(), _HostName(hostname), _Name(), _Registration(false), _Pass(false), _FileDescriptor(fd)
 {
-
+    _Quit = false;
 }
 
 User::User()
