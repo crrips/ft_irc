@@ -48,8 +48,11 @@
 #include <cstdio>
 #include <cstdlib>
 #include "User.hpp"
+#include "./Commands/Commands.hpp"
+#include <vector>
 
 class User;
+class Commands;
 
 class Parsing
 {
