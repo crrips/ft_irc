@@ -39,11 +39,10 @@ void Commands::ToUse(User *user)
             arguments.push_back(buf);
         if (!user->IsRegistered() && command->authRequired())
         {
-            std::cout<<"blublu"<<std::endl;
             user->ReplyMsg(ERR_NOTREGISTERED(user->getNickname()));
             return;
         }
-        //->execute(user, arguments);
+        //UserCmd(user, arguments);
     }
     catch (const std::out_of_range &e)
     {
