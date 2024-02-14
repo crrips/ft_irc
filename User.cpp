@@ -45,6 +45,11 @@ std::string User::getMessage() const
     return result;
 }
 
+int User::getFd() const
+{
+    return (_FileDescriptor);
+}
+
 void User::setHostName( const std::string hostname)
 {
     _HostName = hostname;

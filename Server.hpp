@@ -47,6 +47,7 @@ class Server
 
         User *getUser(std::string const &nickname);
         void setUser(User *user, std::string const &nickname, int fd);
+        void addUser(User *user, int fd);
         
         void NewUser();
         void DeleteUser(iterator &it);

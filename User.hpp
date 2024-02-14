@@ -35,6 +35,7 @@ public:
     std::string getUserName() const;
     std::string getName() const;
     std::string getMessage() const;
+    int getFd() const;
     bool isQuit() const;
 
     void setHostName(const std::string hostname);

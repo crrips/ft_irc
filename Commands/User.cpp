@@ -21,5 +21,5 @@ void Commands::UserCmd(User *user, std::vector<std::string> obj)
         user->setRegistration(true);
         user->ReplyMsg(RPL_WELCOME(user->getNickname()));
     }
-    // we don't saving user in server list bruuuuh
+    _Server->setUser(user, user->getNickname(), user->getFd());
 }
