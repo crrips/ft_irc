@@ -16,9 +16,6 @@ void Commands::UserCmd(User *user, std::vector<std::string> obj)
     user->setHostName(obj[1]);
     user->setNickname(obj[2]);
     user->setName(obj[3]);
-    if (user->getNickname() != "")
-    {
+    if (user->getNickname() != "" && user->getPass() == true)
         user->setRegistration(true);
-        user->ReplyMsg(RPL_WELCOME(user->getNickname()));
-    }
 }

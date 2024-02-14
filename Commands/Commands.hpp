@@ -29,6 +29,7 @@ class Commands
 
         void Handle(User *user, std::vector<std::string> obj, std::string const cmd);
         
+        void Pass(User *user, std::vector<std::string> obj);
         void Invite(User *user, std::vector<std::string> obj);
         void Join(User *user, std::vector<std::string> obj);
         void Kick(User *user, std::vector<std::string> obj);
