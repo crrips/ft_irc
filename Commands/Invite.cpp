@@ -12,11 +12,11 @@ void Commands::Invite(User *user, std::vector<std::string> obj)
     std::string channelName = obj[1];
 
     // uberi eto potom
-    if (!_Server)
-    {
-        user->ReplyMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "INVITE"));
-        return ;
-    }
+    // if (!_Server)
+    // {
+    //     user->ReplyMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "INVITE"));
+    //     return ;
+    // }
     //
 
     User *userToInvitePtr = _Server->getUser(userToInvite);

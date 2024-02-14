@@ -40,5 +40,5 @@ void Commands::Kick(User *user, std::vector<std::string> obj)
 
     channel->kick(target, reason);
     target->LeaveTheChannel(channel);
-    // there must be message to all users in the channel that user was kicked
+    channel->sendMsg(user, ":" + user->getNickname() + " KICK " + channelName + " " + nickname + " :" + reason);
 }
