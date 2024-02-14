@@ -49,6 +49,11 @@ User *Channel::getUser(std::string const &nickname)
     return (NULL);
 }
 
+User *Channel::getAdmin()
+{
+    return (_admin);
+}
+
 void Channel::setName(std::string const &name)
 {
     _name = name;
@@ -62,6 +67,11 @@ void Channel::setPass(std::string const &pass)
 void Channel::setTopic(std::string const &topic)
 {
     _topic = topic;
+}
+
+void Channel::setAdmin(User *admin)
+{
+    _admin = admin;
 }
 
 bool Channel::isAdmin(User *user)

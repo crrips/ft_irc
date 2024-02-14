@@ -9,8 +9,8 @@
 #define RPL_TOPIC(source, channel, topic)       "332 " + source + " " + channel + " :" + topic
 #define RPL_INVITING(name, nickname, channel)            "341 " + name + " " + nickname + " " + channel
 #define RPL_WHOREPLY(name, channel, user, hostname, nickname, file, reply)"352 " + name + " " + channel + " " + user + " " + hostname + " ft_irc " + nickname + " " + file + " :1 " + reply
-#define RPL_NAMREPLY(name, channel, prefix, nickname)    "353 " + name + " = " + ch + " :" + prefix + nick
-#define RPL_ENDOFNAMES(name, channel)                "366 " + name +  " " + ch + " :End of /NAMES list"
+#define RPL_NAMREPLY(name, channel, prefix, nickname)    "353 " + name + " = " + channel + " :" + prefix + nickname
+#define RPL_ENDOFNAMES(name, channel)                "366 " + name +  " " + channel + " :End of /NAMES list"
 
 #define RPL_MSG(prefix, command, target, message)   ":" + prefix + " " + command + " " + target + " :" + message
 #define RPL_KICK(prefix, channel, target, message)   ":" + prefix + " KICK " + channel + " " + target + " :" + message

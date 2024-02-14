@@ -35,6 +35,25 @@ void Commands::Join(User *user, std::vector<std::string> obj)
             return ;
         }
     }
+
+    if (channel->getUsers().size() == 0)
+        channel->setAdmin(user);
+
     user->JoinTheChannel(channel);
-    // there must be message to all users in the channel that user joined
+
+    user->SendMsg(":" + user->getNickname() + " JOIN " + channelName);
+
+    if (channel->getUsers().size() == 1)
+        user->SendMsg(":" + user->getNickname() + " " + channelName + " :you are the new admin");
+
+    std::vector<User *> users = channel->getUsers();
+    for (std::vector<User *>::iterator it = users.begin(); it != users.end(); ++it)
+    {
+        if (*it == channel->getAdmin())
+            user->SendMsg(RPL_NAMREPLY(user->getNickname(), channelName, "@", (*it)->getNickname()));
+        else
+            user->SendMsg(RPL_NAMREPLY(user->getNickname(), channelName, "", (*it)->getNickname()));
+    }
+
+    user->SendMsg(RPL_ENDOFNAMES(user->getNickname(), channelName));
 }
