@@ -29,7 +29,7 @@ public:
 
     bool _Quit;
     std::string _Buffer;
-
+    
     bool getPass();
     void setPass();
     std::string getHostName() const;

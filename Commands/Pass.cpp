@@ -7,19 +7,19 @@ void Commands::Pass(User *user, std::vector<std::string> obj)
         user->SendMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "PASS"));
         return;
     }
-
-    else if(user->IsRegistered())
+    if(user->IsRegistered())
     {
+
         user->SendMsg(ERR_ALREADYREGISTERED(user->getNickname()));
         return;
     }
-
-    else if (_Server->getPassword() != obj[0].substr(obj[0][0] == ':' ? 1 : 0))
+    if (_Server->getPassword() != obj[0].substr(obj[0][0] == ':' ? 1 : 0))
     {
         user->ReplyMsg(ERR_PASSWDMISMATCH(user->getNickname()));
         return;
     }
     user->setPass();
+    //user->ReplyMsg(RPL_WELCOME(user->getNickname()));
     user->Registration();
 
 

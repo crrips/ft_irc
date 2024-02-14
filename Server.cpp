@@ -236,5 +236,5 @@ void    Server::DeleteUser(iterator &it)
     _NewUser.erase(it->second->getNickname());
     delete it->second;
     _User.erase(it);
-    std::cout << "Users' connection: " << _User.size() << std::endl;
+    std::cout << "Users' connected: " << _User.size() << std::endl;
 }
