@@ -1,7 +1,6 @@
 #ifndef PARSING_HPP
 #define PARSING_HPP
 
-
 //Command responses:
 
 #define RPL_WELCOME(source)                     "001 " + source + " :Welcome to the ft_irc Network"

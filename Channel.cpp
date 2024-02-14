@@ -110,3 +110,12 @@ void Channel::kick(User *user, std::string const &msg)
     }
     user->SendMsg(msg);
 }
+
+void Channel::sendMsg(User *user, std::string const &msg)
+{
+    for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); ++it)
+    {
+        if (*it != user)
+            (*it)->SendMsg(msg);
+    }
+}
