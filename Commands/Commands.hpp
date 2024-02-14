@@ -37,6 +37,10 @@ class Commands
         void PrivMsg(User *user, std::vector<std::string> obj);
         void Quit(User *user, std::vector<std::string> obj);
         void UserCmd(User *user, std::vector<std::string> obj);
+        void Nick(User *user, std::vector<std::string> obj);
+        //void Mode(User *user, std::vector<std::string> obj);
+        void Pong(User *user, std::vector<std::string> obj);
+        void Ping(User *user, std::vector<std::string> obj);
 };
 
 #endif
