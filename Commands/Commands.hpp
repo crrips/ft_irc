@@ -29,6 +29,7 @@ class Commands
 
         void Handle(User *user, std::vector<std::string> obj, std::string const cmd);
         
+        void Pass(User *user, std::vector<std::string> obj);
         void Invite(User *user, std::vector<std::string> obj);
         void Join(User *user, std::vector<std::string> obj);
         void Kick(User *user, std::vector<std::string> obj);
@@ -37,6 +38,10 @@ class Commands
         void PrivMsg(User *user, std::vector<std::string> obj);
         void Quit(User *user, std::vector<std::string> obj);
         void UserCmd(User *user, std::vector<std::string> obj);
+        void Nick(User *user, std::vector<std::string> obj);
+        //void Mode(User *user, std::vector<std::string> obj);
+        void Pong(User *user, std::vector<std::string> obj);
+        void Ping(User *user, std::vector<std::string> obj);
 };
 
 #endif

@@ -15,6 +15,16 @@ User::~User()
 
 }
 
+bool User::getPass()
+{
+    return (_Pass);
+}
+
+void User::setPass()
+{
+    _Pass = true;
+}
+
 std::string User::getHostName() const
 {
     return (_HostName);

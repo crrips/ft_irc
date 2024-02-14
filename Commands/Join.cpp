@@ -39,6 +39,10 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     if (channel->getUsers().size() == 0)
         channel->setAdmin(user);
 
+
+    if (channel->getUsers().size() == 0)
+        channel->setAdmin(user);
+
     user->JoinTheChannel(channel);
 
     user->SendMsg(":" + user->getNickname() + " JOIN " + channelName);
