@@ -60,6 +60,7 @@ class Parsing
     public:
         static void IsValidNumeric(std::string const &str);
         int ItExists(User *user);
+        static bool IsValidNick(std::string str);
 };
 
 

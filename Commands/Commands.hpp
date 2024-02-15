@@ -13,6 +13,7 @@
 class User;
 class Channel;
 class Server;
+class Parsing;
 
 class Commands
 {
