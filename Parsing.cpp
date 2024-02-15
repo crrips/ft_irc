@@ -33,3 +33,14 @@ int Parsing::ItExists(User *user)
     }
     return 0;
 }
+
+bool Parsing::IsValidNick(std::string str)
+{
+    std::string::iterator c = str.begin();
+    if (!std::isalpha(*c))
+        return false;
+    for (; c != str.end(); ++c)
+        if (!std::isprint(*c))
+            return false;
+    return true;
+};

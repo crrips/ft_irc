@@ -69,6 +69,14 @@ void Commands::Handle(User *user, std::vector<std::string> obj, std::string cons
         Topic(user, obj);
     else if(!cmd.compare("PRIVMSG"))
         PrivMsg(user, obj);
+    else if(!cmd.compare("NICK"))
+        Nick(user, obj);
+    else if(!cmd.compare("PONG"))
+        Pong(user, obj);
+    else if(!cmd.compare("PING"))
+        Ping(user, obj);
+    //else if(!cmd.compare("MODE"))
+    //    Mode(user, obj);
     else
         user->ReplyMsg(ERR_UNKNOWNCOMMAND(user->getNickname(), cmd));
 }
