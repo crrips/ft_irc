@@ -24,8 +24,9 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     Channel *channel = _Server->getChannel(channelName);
     if (channel == NULL)
     {
-        channel = new Channel(channelName, channelPass, user);
+        // channel = new Channel(channelName, channelPass, user);
         _Server->AddChannel(channelName, channelPass);
+        channel = _Server->getChannel(channelName);
     }
     else
     {
@@ -35,9 +36,11 @@ void Commands::Join(User *user, std::vector<std::string> obj)
             return ;
         }
     }
-
-    if (channel->getUsers().size() == 0)
-        channel->setAdmin(user);
+    if (channel->getUser(user->getNickname()) == user)
+    {
+        user->ReplyMsg(ERR_USERONCHANNEL(user->getNickname(), user->getNickname(), channelName));
+        return ;
+    }
 
 
     if (channel->getUsers().size() == 0)

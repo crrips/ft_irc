@@ -83,14 +83,14 @@ User *Server::getUser(std::string const &nickname)
 void Server::setUser(User *user, std::string const &newNickname, int fd)
 {
     std::string oldNickname = user->getNickname();
-    if (!oldNickname.empty())
-    {
-        for (iterator it = _User.begin(); it != _User.end(); ++it)
-        {
-            if (it->second != user)
-                it->second->SendMsg(":" + oldNickname + " NICK " + newNickname);
-        }
-    }
+    // if (!oldNickname.empty())
+    // {
+    //     for (iterator it = _User.begin(); it != _User.end(); ++it)
+    //     {
+    //         if (it->second != user)
+    //             it->second->SendMsg(":" + oldNickname + " NICK " + newNickname);
+    //     }
+    // }
     _NewUser.erase(oldNickname);
     _NewUser.erase(newNickname);
     _NewUser.insert(std::make_pair(newNickname, fd));

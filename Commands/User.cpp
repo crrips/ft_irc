@@ -16,10 +16,10 @@ void Commands::UserCmd(User *user, std::vector<std::string> obj)
     user->setHostName(obj[1]);
     user->setNickname(obj[2]);
     user->setName(obj[3]);
-    if (user->getNickname() != "")
-    {
-        user->setRegistration(true);
-        user->ReplyMsg(RPL_WELCOME(user->getNickname()));
-    }
+    // if (user->getNickname() != "")
+    // {
+    //     user->setRegistration(true);
+    //     user->ReplyMsg(RPL_WELCOME(user->getNickname()));
+    // }
     _Server->setUser(user, user->getNickname(), user->getFd());
 }
