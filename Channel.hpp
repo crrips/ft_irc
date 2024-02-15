@@ -14,7 +14,10 @@ class Channel
         std::string _name;
         std::string _pass;
         std::string _topic;
+        std::string _mode;
+
         User *_admin;
+
 
         std::vector<User *> _users;
 
@@ -35,6 +38,9 @@ class Channel
         void setPass(std::string const &pass);
         void setTopic(std::string const &topic);
         void setAdmin(User *admin);
+        void setMode(std::string const &mode);
+
+        void applyMode(std::string const &mode);
         
         bool isAdmin(User *user);
         bool isExist(User *user);

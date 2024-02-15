@@ -74,6 +74,23 @@ void Channel::setAdmin(User *admin)
     _admin = admin;
 }
 
+void Channel::setMode(std::string const &mode)
+{
+    _mode = mode;
+}
+
+// void Channel::applyMode(std::string const &mode)
+// {
+//     for (std::string::iterator it = mode.begin(); it != mode.end(); ++it)
+//     {
+//         if (*it == 'o')
+//         {
+//             _admin = _users[0];
+//         }
+//     }
+
+// }
+
 bool Channel::isAdmin(User *user)
 {
     if (user == _admin)
