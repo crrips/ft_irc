@@ -28,6 +28,11 @@ void Commands::Topic(User *user, std::vector<std::string> obj)
         user->SendMsg(ERR_CHANOPRIVSNEEDED(user->getNickname(), channel->getName()));
         return ;
     }
+    if (channel->isOperator(user) && !channel->isTopicOperators())
+    {
+        user->SendMsg(RPL_NOTOPIC(user->getNickname(), channel->getName()));
+        return ;
+    }
     if (obj.size() == 2)
         channel->setTopic(obj[1]);
     user->SendMsg(RPL_TOPIC(user->getNickname(), channel->getName(), channel->getTopic()));

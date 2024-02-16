@@ -131,6 +131,7 @@ void Channel::applyMode()
         }
         else if (_mode[1] == 't')
         {
+            _topicOperators = true;
             this->sendMsg(_admin, "Topic in channel is now moderated");
         }
         else if (_mode[1] == 'k')
@@ -157,6 +158,7 @@ void Channel::applyMode()
         }
         else if (_mode[1] == 't')
         {
+            _topicOperators = false;
             this->sendMsg(_admin, "Topic in channel is no longer moderated");
         }
         else if (_mode[1] == 'k')
@@ -218,6 +220,11 @@ bool Channel::isInvite(User *user)
 bool Channel::isInviteOnly()
 {
     return (_inviteOnly);
+}
+
+bool Channel::isTopicOperators()
+{
+    return (_topicOperators);
 }
 
 void Channel::join(User *user)

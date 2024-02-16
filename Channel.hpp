@@ -19,6 +19,7 @@ class Channel
         User *_admin;
 
         bool    _inviteOnly;
+        bool    _topicOperators;
         int     _limit;
 
         std::vector<User *> _users;
@@ -54,6 +55,7 @@ class Channel
         bool isExist(User *user);
         bool isInvite(User *user);
         bool isInviteOnly();
+        bool isTopicOperators();
 
         void join(User *user);
         void part(User *user);
