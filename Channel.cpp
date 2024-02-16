@@ -1,20 +1,6 @@
 #include "Channel.hpp"
 
-// Channel::Channel()
-// {
-// }
-
-// Channel::~Channel()
-// {
-    
-// }
-
-// Channel::Channel(Channel const &obj)
-// {
-//     *this = obj;
-// }
-
-Channel::Channel(std::string const &name, std::string const &pass, User *admin) : _name(name), _pass(pass), _admin(admin), _inviteOnly(false)
+Channel::Channel(std::string const &name, std::string const &pass, User *admin) : _name(name), _pass(pass), _admin(admin), _inviteOnly(false), _limit(0)
 {
 
 }
@@ -122,6 +108,18 @@ void Channel::unsetOperator()
         this->sendMsg(_admin, "No such user");
 }
 
+void Channel::unsetInvite(User *user)
+{
+    for (std::vector<User *>::iterator it = _invitees.begin(); it != _invitees.end(); ++it)
+    {
+        if (*it == user)
+        {
+            _invitees.erase(it);
+            break;
+        }
+    }
+}
+
 void Channel::applyMode()
 {
     if (_mode[0] == '+')
@@ -163,7 +161,7 @@ void Channel::applyMode()
         }
         else if (_mode[1] == 'k')
         {
-            _pass.clear();
+            _pass = "";
             this->sendMsg(_admin, "Channel password is now removed");
         }
         else if (_mode[1] == 'o')

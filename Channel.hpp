@@ -26,9 +26,6 @@ class Channel
         std::vector<User *> _invitees;
 
     public:
-        // Channel();
-        // ~Channel();
-        // Channel(Channel const &obj);
         Channel(std::string const &name, std::string const &pass, User *admin);
 
         std::string getName();
@@ -48,6 +45,7 @@ class Channel
         void setInvite(User *user);
 
         void unsetOperator();
+        void unsetInvite(User *user);
 
         void applyMode();
         

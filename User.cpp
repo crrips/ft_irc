@@ -95,11 +95,6 @@ void User::SendMsg(const std::string &msg)
     std::string buffer = msg + "\r\n";
     (void)_FileDescriptor;
 
-    // delete this
-    //std::cout << _Nickname << ": " << buffer;
-    //
-    
-    // uncomment this
     if (send(_FileDescriptor, buffer.c_str(), buffer.length(), 0) < 0)
          std::cout << "\33[1;31mError: Can't send the message to the client!\33[1;31m" << std::endl;
 }
