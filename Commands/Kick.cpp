@@ -32,7 +32,7 @@ void Commands::Kick(User *user, std::vector<std::string> obj)
         return ;
     }
 
-    if (!channel->isAdmin(user))
+    if (!channel->isAdmin(user) && !channel->isOperator(user))
     {
         user->ReplyMsg(ERR_CHANOPRIVSNEEDED(user->getNickname(), channelName));
         return ;

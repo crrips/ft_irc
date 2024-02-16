@@ -37,6 +37,8 @@
 #define ERR_NEEDMOREPARAMS(source, command)     "461 " + source + " " + command + " :Not enough parameters"
 #define ERR_ALREADYREGISTERED(source)           "462 " + source + " :You may not reregister"
 #define ERR_PASSWDMISMATCH(source)              "464 " + source + " :Password incorrect"
+#define ERR_CHANNELISFULL(source, command)      "471 " + source + " " + command + " :Cannot join channel, channel is full (+l)"
+#define ERR_INVITEONLYCHAN(source, command)     "473 " + source + " " + command + " :Cannot join channel, you must be invited (+i)"
 #define ERR_BADCHANNELKEY(source, command)      "475 " + source + " " + command + " :Cannot join channel (+k)"
 #define ERR_BADCHANMASK(source, command)        "476 " + source + " " + command + " :Bad Channel Mask"
 #define ERR_CHANOPRIVSNEEDED(source, command)   "482 " + source + " " + command + " :You're not channel operator"

@@ -75,8 +75,8 @@ void Commands::Handle(User *user, std::vector<std::string> obj, std::string cons
         Pong(user, obj);
     else if(!cmd.compare("PING"))
         Ping(user, obj);
-    //else if(!cmd.compare("MODE"))
-    //    Mode(user, obj);
+    else if(!cmd.compare("MODE"))
+       Mode(user, obj);
     else
         user->ReplyMsg(ERR_UNKNOWNCOMMAND(user->getNickname(), cmd));
 }

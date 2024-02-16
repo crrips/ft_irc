@@ -14,7 +14,7 @@
 //     *this = obj;
 // }
 
-Channel::Channel(std::string const &name, std::string const &pass, User *admin) : _name(name), _pass(pass), _admin(admin)
+Channel::Channel(std::string const &name, std::string const &pass, User *admin) : _name(name), _pass(pass), _admin(admin), _inviteOnly(false)
 {
 
 }
@@ -54,6 +54,11 @@ User *Channel::getAdmin()
     return (_admin);
 }
 
+int Channel::getLimit()
+{
+    return (_limit);
+}
+
 void Channel::setName(std::string const &name)
 {
     _name = name;
@@ -79,22 +84,116 @@ void Channel::setMode(std::string const &mode)
     _mode = mode;
 }
 
-// void Channel::applyMode(std::string const &mode)
-// {
-//     for (std::string::iterator it = mode.begin(); it != mode.end(); ++it)
-//     {
-//         if (*it == 'o')
-//         {
-//             _admin = _users[0];
-//         }
-//     }
+void Channel::setOperator()
+{
+    std::string nickname = _mode.substr(1);
+    User *user = this->getUser(nickname);
+    if (user)
+    {
+        _operators.push_back(user);
+        this->sendMsg(_admin, "New operator added");
+    }
+    else
+        this->sendMsg(_admin, "No such user");
+}
 
-// }
+void Channel::setInvite(User *user)
+{
+    _invitees.push_back(user);
+}
+
+void Channel::unsetOperator()
+{
+    std::string nickname = _mode.substr(1);
+    User *user = this->getUser(nickname);
+    if (user)
+    {
+        for (std::vector<User *>::iterator it = _operators.begin(); it != _operators.end(); ++it)
+        {
+            if (*it == user)
+            {
+                _operators.erase(it);
+                this->sendMsg(_admin, "Operator removed");
+                break;
+            }
+        }
+    }
+    else
+        this->sendMsg(_admin, "No such user");
+}
+
+void Channel::applyMode()
+{
+    if (_mode[0] == '+')
+    {
+        if (_mode[1] == 'i')
+        {
+            _inviteOnly = true;
+            this->sendMsg(_admin, "Channel is now invite only");
+        }
+        else if (_mode[1] == 't')
+        {
+            this->sendMsg(_admin, "Topic in channel is now moderated");
+        }
+        else if (_mode[1] == 'k')
+        {
+            _pass = _mode.substr(1);
+            this->sendMsg(_admin, "Channel password is now " + _pass);
+        }
+        else if (_mode[1] == 'o')
+        {
+            this->setOperator();
+        }
+        else if (_mode[1] == 'l')
+        {
+            _limit = atoi(_mode.substr(1).c_str());
+            this->sendMsg(_admin, "Channel limit is now " + _mode.substr(1));
+        }
+    }
+    else if (_mode[0] == '-')
+    {
+        if (_mode[1] == 'i')
+        {
+            _inviteOnly = false;
+            this->sendMsg(_admin, "Channel is no longer invite only");
+        }
+        else if (_mode[1] == 't')
+        {
+            this->sendMsg(_admin, "Topic in channel is no longer moderated");
+        }
+        else if (_mode[1] == 'k')
+        {
+            _pass.clear();
+            this->sendMsg(_admin, "Channel password is now removed");
+        }
+        else if (_mode[1] == 'o')
+        {
+            unsetOperator();
+        }
+        else if (_mode[1] == 'l')
+        {
+            _limit = 0;
+            this->sendMsg(_admin, "Channel limit is now removed");
+        }
+    }
+    
+    _mode.clear();
+}
 
 bool Channel::isAdmin(User *user)
 {
     if (user == _admin)
         return (true);
+    return (false);
+}
+
+bool Channel::isOperator(User *user)
+{
+    for (std::vector<User *>::iterator it = _operators.begin(); it != _operators.end(); ++it)
+    {
+        if (*it == user)
+            return (true);
+    }
     return (false);
 }
 
@@ -106,6 +205,21 @@ bool Channel::isExist(User *user)
             return (true);
     }
     return (false);
+}
+
+bool Channel::isInvite(User *user)
+{
+    for (std::vector<User *>::iterator it = _invitees.begin(); it != _invitees.end(); ++it)
+    {
+        if (*it == user)
+            return (true);
+    }
+    return (false);
+}
+
+bool Channel::isInviteOnly()
+{
+    return (_inviteOnly);
 }
 
 void Channel::join(User *user)

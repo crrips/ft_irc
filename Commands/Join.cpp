@@ -30,18 +30,30 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     }
     else
     {
-        if (channel->getPass() != channelPass)
+        if (channel->isInviteOnly() && !channel->isInvite(user))
         {
-            user->ReplyMsg(ERR_BADCHANNELKEY(user->getNickname(), channelName));
+            user->ReplyMsg(ERR_INVITEONLYCHAN(user->getNickname(), channelName));
+            return ;
+        }
+        if (!channel->isInvite(user))
+        {
+            if (channel->getPass() != channelPass)
+            {
+                user->ReplyMsg(ERR_BADCHANNELKEY(user->getNickname(), channelName));
+                return ;
+            }
+        }
+        if (channel->getLimit() && (int)channel->getUsers().size() >= channel->getLimit())
+        {
+            user->ReplyMsg(ERR_CHANNELISFULL(user->getNickname(), channelName));
             return ;
         }
     }
-    if (channel->getUser(user->getNickname()) == user)
+    if (channel->isExist(user))
     {
         user->ReplyMsg(ERR_USERONCHANNEL(user->getNickname(), user->getNickname(), channelName));
         return ;
     }
-
 
     if (channel->getUsers().size() == 0)
         channel->setAdmin(user);

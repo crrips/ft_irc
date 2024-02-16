@@ -18,8 +18,12 @@ class Channel
 
         User *_admin;
 
+        bool    _inviteOnly;
+        int     _limit;
 
         std::vector<User *> _users;
+        std::vector<User *> _operators;
+        std::vector<User *> _invitees;
 
     public:
         // Channel();
@@ -33,17 +37,25 @@ class Channel
         std::vector<User *> getUsers();
         User *getUser(std::string const &nickname);
         User *getAdmin();
+        int getLimit();
 
         void setName(std::string const &name);
         void setPass(std::string const &pass);
         void setTopic(std::string const &topic);
         void setAdmin(User *admin);
         void setMode(std::string const &mode);
+        void setOperator();
+        void setInvite(User *user);
 
-        void applyMode(std::string const &mode);
+        void unsetOperator();
+
+        void applyMode();
         
         bool isAdmin(User *user);
+        bool isOperator(User *user);
         bool isExist(User *user);
+        bool isInvite(User *user);
+        bool isInviteOnly();
 
         void join(User *user);
         void part(User *user);
