@@ -207,8 +207,9 @@ void Server::NewUser()
 {
     sockaddr_in _ClientAddress;
     socklen_t _AddLen = sizeof(_ClientAddress);
-    //memset(&_Address, 0, _ClientAddress);
     // Accepts a new connection to our server
+
+    memset(&_Address, 0, _AddLen);
     int _Socket = accept(_FileDescriptor, (struct sockaddr *)&_ClientAddress, &_AddLen);
     if (_Socket == -1)
     {
@@ -222,6 +223,7 @@ void Server::NewUser()
     getnameinfo((struct sockaddr *)&_ClientAddress, sizeof(_ClientAddress), hostname, NI_MAXHOST, NULL, 0, NI_NUMERICSERV); // NI_NUMERICSERV: the port is numeric
     User *_NewUser = new User(_Socket, hostname);
     _User.insert(std::make_pair(_Socket, _NewUser));
+
     std::cout << "\x1b[32mNew connection: \x1b[32m" << _NewUser->getMessage() << std::endl;
     std::cout << "\x1b[32mUsers' connected: \x1b[32m" << _User.size() << std::endl;
 }

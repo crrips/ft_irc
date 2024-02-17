@@ -93,7 +93,6 @@ void User::setQuit(bool status)
 void User::SendMsg(const std::string &msg)
 {
     std::string buffer = msg + "\r\n";
-    (void)_FileDescriptor;
 
     if (send(_FileDescriptor, buffer.c_str(), buffer.length(), 0) < 0)
          std::cout << "\33[1;31mError: Can't send the message to the client!\33[1;31m" << std::endl;
@@ -101,7 +100,7 @@ void User::SendMsg(const std::string &msg)
 
 void User::ReplyMsg(const std::string &msg)
 {
-    SendMsg(getMessage() + " " + msg);
+    SendMsg(":" + getMessage() + " " + msg);
 }
 
 void User::Registration()

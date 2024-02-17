@@ -7,7 +7,7 @@ OBJS		= $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 CC			= c++
 
-CFLAGS		= -Wall -Wextra -Werror -std=c++98 -I.
+CFLAGS		= -Wall -Wextra -Werror -std=c++11 -I.
 
 RM			= rm -f
 
@@ -21,6 +21,7 @@ $(OBJ_DIR)/%.o: %.cpp
 $(NAME):	$(OBJS)
 			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 			@echo "\x1b[32m$(NAME) is compiled! 🤠🐱\x1b[32m"
+			@echo "\x1b[32mINGAAAAAAA, CHANGE THE STANDART!!!!!!!! 🤠🤠🤠🤠🤠🤠\x1b[32m"
 
 clean:
 			@rm -rf $(OBJ_DIR)
