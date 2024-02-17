@@ -75,4 +75,5 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     }
 
     user->SendMsg(RPL_ENDOFNAMES(user->getNickname(), channelName));
+    channel->unsetInvite(user);
 }

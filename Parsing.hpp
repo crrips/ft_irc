@@ -20,6 +20,7 @@
 #define RPL_PART(prefix, target)                    ":" + prefix + " PART " + target
 #define RPL_MODE(prefix, channel, target)           ":" + prefix + " MODE " + channel + " " + target
 #define RPL_INVITE(prefix, target, channel)         ":" + prefix + " INVITE " + target + " " + channel
+#define RPL_NOTICE(prefix, target, message)         ":" + prefix + " NOTICE " + target + " :" + message
 
 #define ERR_NOSUCHNICK(source, command)         "401 " + source + " " + command + " :No such nick/channel"
 #define ERR_NOSUCHCHANNEL(source, command)      "403 " + source + " " + command + " :No such channel"

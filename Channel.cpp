@@ -136,7 +136,7 @@ void Channel::applyMode()
         }
         else if (_mode[1] == 'k')
         {
-            _pass = _mode.substr(1);
+            _pass = _mode.substr(2);
             this->sendMsg(_admin, "Channel password is now " + _pass);
         }
         else if (_mode[1] == 'o')
@@ -145,8 +145,18 @@ void Channel::applyMode()
         }
         else if (_mode[1] == 'l')
         {
-            _limit = atoi(_mode.substr(1).c_str());
-            this->sendMsg(_admin, "Channel limit is now " + _mode.substr(1));
+            std::string limit = _mode.substr(2);
+            for (std::string::iterator it = limit.begin(); it != limit.end(); ++it)
+            {
+                if (!isdigit(*it))
+                {
+                    this->sendMsg(_admin, "Invalid limit");
+                    return ;
+                }
+            }
+            
+            _limit = atoi(limit.c_str());
+            this->sendMsg(_admin, "Channel limit is now " + std::to_string(_limit));
         }
     }
     else if (_mode[0] == '-')
