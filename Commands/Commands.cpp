@@ -79,6 +79,8 @@ void Commands::Handle(User *user, std::vector<std::string> obj, std::string cons
        Mode(user, obj);
     else if(!cmd.compare("NOTICE"))
         Notice(user, obj);
+    else if(!cmd.compare("CAP"))
+        Cap(user, obj);
     else
         user->ReplyMsg(ERR_UNKNOWNCOMMAND(user->getNickname(), cmd));
 }
