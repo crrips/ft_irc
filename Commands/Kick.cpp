@@ -12,6 +12,12 @@ void Commands::Kick(User *user, std::vector<std::string> obj)
     std::string nickname = obj[1];
     std::string reason = obj[2];
 
+    if (reason[0] == ':')
+    reason.erase(0, 1);
+
+    for (size_t i = 3; i < obj.size(); i++)
+        reason += " " + obj[i];
+
     if (channelName[0] != '#' && channelName[0] != '&')
     {
         user->ReplyMsg(ERR_NOSUCHCHANNEL(user->getNickname(), channelName));

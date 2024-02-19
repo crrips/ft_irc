@@ -11,6 +11,12 @@ void Commands::Notice(User *user, std::vector<std::string> obj)
     std::string target = obj[0];
     std::string message = obj[1];
 
+    if (message[0] == ':')
+    message.erase(0, 1);
+
+    for (size_t i = 2; i < obj.size(); i++)
+        message += " " + obj[i];
+
     if (target[0] == '#' || target[0] == '&')
     {
         Channel *channel = _Server->getChannel(target);

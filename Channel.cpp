@@ -272,6 +272,6 @@ void Channel::sendMsg(User *user, std::string const &msg)
     for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); ++it)
     {
         if (*it != user)
-            (*it)->SendMsg(":" + user->getNickname() + " PRIVMSG " + _name + " :" + msg);
+            (*it)->SendMsg(msg);
     }
 }
