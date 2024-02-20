@@ -256,15 +256,23 @@ void Channel::part(User *user)
 
 void Channel::kick(User *user, std::string const &msg)
 {
-    for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); ++it)
+    // for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); ++it)
+    // {
+    //     if (*it == user)
+    //     {
+    //         _users.erase(it);
+    //         break;
+    //     }
+    // }
+    // user->SendMsg(msg);
+    std::vector<User *>::iterator tmp;
+    for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); it++)
     {
+        (*it)->SendMsg(RPL_KICK(user->getMessage(), _name, user->getNickname(), msg));
         if (*it == user)
-        {
-            _users.erase(it);
-            break;
-        }
+            tmp = it;
     }
-    user->SendMsg(msg);
+    _users.erase(tmp);
 }
 
 void Channel::sendMsg(User *user, std::string const &msg)
