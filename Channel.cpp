@@ -77,10 +77,10 @@ void Channel::setOperator()
     if (user)
     {
         _operators.push_back(user);
-        this->sendMsg(_admin, "New operator added");
+        this->sendMsg("New operator added");
     }
     else
-        this->sendMsg(_admin, "No such user");
+        this->sendMsg("No such user");
 }
 
 void Channel::setInvite(User *user)
@@ -99,13 +99,13 @@ void Channel::unsetOperator()
             if (*it == user)
             {
                 _operators.erase(it);
-                this->sendMsg(_admin, "Operator removed");
+                this->sendMsg("Operator removed");
                 break;
             }
         }
     }
     else
-        this->sendMsg(_admin, "No such user");
+        this->sendMsg("No such user");
 }
 
 void Channel::unsetInvite(User *user)
@@ -127,17 +127,17 @@ void Channel::applyMode()
         if (_mode[1] == 'i')
         {
             _inviteOnly = true;
-            this->sendMsg(_admin, "Channel is now invite only");
+            this->sendMsg("Channel is now invite only");
         }
         else if (_mode[1] == 't')
         {
             _topicOperators = true;
-            this->sendMsg(_admin, "Topic in channel is now moderated");
+            this->sendMsg("Topic in channel is now moderated");
         }
         else if (_mode[1] == 'k')
         {
             _pass = _mode.substr(2);
-            this->sendMsg(_admin, "Channel password is now " + _pass);
+            this->sendMsg("Channel password is now " + _pass);
         }
         else if (_mode[1] == 'o')
         {
@@ -150,13 +150,13 @@ void Channel::applyMode()
             {
                 if (!isdigit(*it))
                 {
-                    this->sendMsg(_admin, "Invalid limit");
+                    this->sendMsg("Invalid limit");
                     return ;
                 }
             }
             
             _limit = atoi(limit.c_str());
-            this->sendMsg(_admin, "Channel limit is now " + std::to_string(_limit));
+            this->sendMsg("Channel limit is now " + std::to_string(_limit));
         }
     }
     else if (_mode[0] == '-')
@@ -164,17 +164,17 @@ void Channel::applyMode()
         if (_mode[1] == 'i')
         {
             _inviteOnly = false;
-            this->sendMsg(_admin, "Channel is no longer invite only");
+            this->sendMsg("Channel is no longer invite only");
         }
         else if (_mode[1] == 't')
         {
             _topicOperators = false;
-            this->sendMsg(_admin, "Topic in channel is no longer moderated");
+            this->sendMsg("Topic in channel is no longer moderated");
         }
         else if (_mode[1] == 'k')
         {
             _pass = "";
-            this->sendMsg(_admin, "Channel password is now removed");
+            this->sendMsg("Channel password is now removed");
         }
         else if (_mode[1] == 'o')
         {
@@ -183,7 +183,7 @@ void Channel::applyMode()
         else if (_mode[1] == 'l')
         {
             _limit = 0;
-            this->sendMsg(_admin, "Channel limit is now removed");
+            this->sendMsg("Channel limit is now removed");
         }
     }
     
@@ -267,11 +267,10 @@ void Channel::kick(User *user, std::string const &msg)
     user->SendMsg(msg);
 }
 
-void Channel::sendMsg(User *user, std::string const &msg)
+void Channel::sendMsg(std::string const &msg)
 {
     for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); ++it)
     {
-        if (*it != user)
-            (*it)->SendMsg(msg);
+        (*it)->SendMsg(msg);
     }
 }

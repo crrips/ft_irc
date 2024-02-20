@@ -24,7 +24,6 @@ void Commands::ToUse(User *user)
         user->_Buffer.erase(0, line.size() + 1);
     }
     std::string name = line.substr(0, line.find(" "));
- 
     Commands *command;
     if(_Commands.size() > 0)
         command = _Commands.at(name);

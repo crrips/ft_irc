@@ -61,7 +61,7 @@ class Channel
         void part(User *user);
         void kick(User *user, std::string const &msg);
 
-        void sendMsg(User *user, std::string const &msg);
+        void sendMsg(std::string const &msg);
 };
 
 #endif

@@ -23,9 +23,8 @@ private:
     int _FileDescriptor;
 
 public:
-    User();
     ~User();
-    User(int fd, std::string const &hostname);
+    User(int fd, std::string hostname);
 
     bool _Quit;
     std::string _Buffer;
