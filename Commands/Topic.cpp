@@ -33,7 +33,9 @@ void Commands::Topic(User *user, std::vector<std::string> obj)
         user->SendMsg(RPL_NOTOPIC(user->getNickname(), channel->getName()));
         return ;
     }
-    if (obj.size() == 2)
-        channel->setTopic(obj[1]);
+    std::string topic = obj[1];
+    for (size_t i = 2; i < obj.size(); i++)
+        topic += " " + obj[i];
+    channel->setTopic(topic);
     user->SendMsg(RPL_TOPIC(user->getNickname(), channel->getName(), channel->getTopic()));
 }

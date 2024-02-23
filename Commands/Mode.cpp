@@ -19,6 +19,12 @@ void Commands::Mode(User *user, std::vector<std::string> obj)
         return;
     }
 
+    if (!channel->isAdmin(user) && !channel->isOperator(user))
+    {
+        user->SendMsg(ERR_CHANOPRIVSNEEDED(user->getNickname(), channelName));
+        return;
+    }
+
     channel->setMode(mode + target);
     channel->applyMode();
 }

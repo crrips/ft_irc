@@ -21,6 +21,9 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     std::string channelName = obj[0];
     std::string channelPass = (obj.size() == 2) ? obj[1] : "";
 
+    for (int i = 2; i < (int)obj.size(); i++)
+        channelPass += " " + obj[i];
+
     if (channelName[0] != '#' && channelName[0] != '&')
     {
         user->ReplyMsg(ERR_BADCHANMASK(user->getNickname(), channelName));
