@@ -4,7 +4,7 @@
 
 2. Check the memory leaks (I/A)
 
-3. Check the Mode command, check +o and the texts into channel not the users part, +t doesn't work either (A)
+3. Check the Mode command, check +o and the texts into channel not the users part, +t doesn't work either (A) // DONE
 
 4. Check the Notice command, understand the differences between NOTICE and PRIVMSG (I)
 
@@ -14,4 +14,4 @@
 
 7. File Transfer (A)
 
-8. Write PART (A)
+8. Write PART (A) // DONE

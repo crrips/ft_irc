@@ -8,6 +8,11 @@ void Commands::Nick(User *user, std::vector<std::string> obj)
         return;
     }
     std::string nick = obj[0];
+    if (nick[0] == '#' || nick[0] == '&' || nick[0] == '+' || nick[0] == '-' || nick[0] == '!')
+    {
+        user->ReplyMsg(ERR_ERRONEUSNICKNAME(user->getNickname(), nick));
+        return ;
+    }
     if (!Parsing::IsValidNick(nick))
     {
         user->ReplyMsg(ERR_ERRONEUSNICKNAME(user->getNickname(), nick));

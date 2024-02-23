@@ -72,15 +72,20 @@ void Channel::setMode(std::string const &mode)
 
 void Channel::setOperator()
 {
-    std::string nickname = _mode.substr(1);
+    std::string nickname = _mode.substr(2);
     User *user = this->getUser(nickname);
     if (user)
     {
         _operators.push_back(user);
-        this->sendMsg(_admin, "New operator added");
+        // this->sendMsg(_admin, "New operator added");
+        this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+o " + user->getNickname()));
+        _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+o " + user->getNickname()));
     }
     else
-        this->sendMsg(_admin, "No such user");
+    {
+        this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-o " + nickname));
+        _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-o " + nickname));
+    }
 }
 
 void Channel::setInvite(User *user)
@@ -90,7 +95,7 @@ void Channel::setInvite(User *user)
 
 void Channel::unsetOperator()
 {
-    std::string nickname = _mode.substr(1);
+    std::string nickname = _mode.substr(2);
     User *user = this->getUser(nickname);
     if (user)
     {
@@ -99,13 +104,13 @@ void Channel::unsetOperator()
             if (*it == user)
             {
                 _operators.erase(it);
-                this->sendMsg(_admin, "Operator removed");
+                // this->sendMsg(_admin, "Operator removed");
                 break;
             }
         }
     }
-    else
-        this->sendMsg(_admin, "No such user");
+    this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-o " + nickname));
+    _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-o " + nickname));
 }
 
 void Channel::unsetInvite(User *user)
@@ -127,17 +132,20 @@ void Channel::applyMode()
         if (_mode[1] == 'i')
         {
             _inviteOnly = true;
-            this->sendMsg(_admin, "Channel is now invite only");
+            this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+i"));
+            _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+i"));
         }
         else if (_mode[1] == 't')
         {
             _topicOperators = true;
-            this->sendMsg(_admin, "Topic in channel is now moderated");
+            this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+t"));
+            _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+t"));
         }
         else if (_mode[1] == 'k')
         {
             _pass = _mode.substr(2);
-            this->sendMsg(_admin, "Channel password is now " + _pass);
+            this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+k " + _pass));
+            _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+k " + _pass));
         }
         else if (_mode[1] == 'o')
         {
@@ -150,13 +158,17 @@ void Channel::applyMode()
             {
                 if (!isdigit(*it))
                 {
-                    this->sendMsg(_admin, "Invalid limit");
+                    // this->sendMsg(_admin, "Invalid limit");
+                    this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-l"));
+                    _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-l"));
                     return ;
                 }
             }
             
             _limit = atoi(limit.c_str());
-            this->sendMsg(_admin, "Channel limit is now " + std::to_string(_limit));
+            // this->sendMsg(_admin, "Channel limit is now " + std::to_string(_limit));
+            this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+l " + std::to_string(_limit)));
+            _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "+l " + std::to_string(_limit)));
         }
     }
     else if (_mode[0] == '-')
@@ -164,17 +176,23 @@ void Channel::applyMode()
         if (_mode[1] == 'i')
         {
             _inviteOnly = false;
-            this->sendMsg(_admin, "Channel is no longer invite only");
+            // this->sendMsg(_admin, "Channel is no longer invite only");
+            this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-i"));   
+            _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-i"));
         }
         else if (_mode[1] == 't')
         {
             _topicOperators = false;
-            this->sendMsg(_admin, "Topic in channel is no longer moderated");
+            // this->sendMsg(_admin, "Topic in channel is no longer moderated");
+            this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-t"));
+            _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-t"));
         }
         else if (_mode[1] == 'k')
         {
             _pass = "";
-            this->sendMsg(_admin, "Channel password is now removed");
+            // this->sendMsg(_admin, "Channel password is now removed");
+            this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-k"));
+            _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-k"));
         }
         else if (_mode[1] == 'o')
         {
@@ -183,7 +201,9 @@ void Channel::applyMode()
         else if (_mode[1] == 'l')
         {
             _limit = 0;
-            this->sendMsg(_admin, "Channel limit is now removed");
+            // this->sendMsg(_admin, "Channel limit is now removed");
+            this->sendMsg(_admin, RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-l"));
+            _admin->SendMsg(RPL_CHANNELMODEIS(_admin->getNickname(), _name, "-l"));
         }
     }
     
