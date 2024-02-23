@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Feb 15 19:00:39 2024
+# Make data base, printed on Sun Feb 18 15:57:19 2024
 
 # Variables
 
@@ -23,7 +23,7 @@ LOCALAPPDATA = C:\Users\User\AppData\Local
 # environment
 VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
 # environment
-VSCODE_CWD = C:\Users\User\AppData\Local\Programs\Microsoft VS Code
+VSCODE_CWD = C:\Users\User\Desktop
 # environment
 SYSTEMROOT = C:\WINDOWS
 # environment
@@ -37,7 +37,7 @@ MAKE_COMMAND := make.exe
 # makefile (from 'Makefile', line 5)
 OBJ_DIR = obj
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4116_HOURAQKTOCODXKMF
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_332_CSSSSIYUVQPPCLHA
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -51,7 +51,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\User\AppData\Roaming\Code\CachedData\31c37ee8f63491495ac49e43b8544550fbae4533
+VSCODE_CODE_CACHE_PATH = C:\Users\User\AppData\Roaming\Code\CachedData\903b1e9d8990623e3d7da1df3d33db3e42d80eda
 # environment
 LANG = C
 # default
@@ -69,7 +69,7 @@ ONEDRIVE = C:\Users\User\OneDrive
 # environment
 POWERSHELL_DISTRIBUTION_CHANNEL = MSI:Windows 10 Home
 # makefile
-CURDIR := c:/Users/User/Desktop/brabus
+CURDIR := c:/Users/User/Desktop/boobs
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # makefile (from 'Makefile', line 3)
@@ -91,7 +91,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 4116
+VSCODE_PID = 332
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -173,7 +173,7 @@ PUBLIC = C:\Users\Public
 # environment
 APPDATA = C:\Users\User\AppData\Roaming
 # makefile (from 'Makefile', line 10)
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
+CFLAGS = -Wall -Wextra -Werror -std=c++11 -I.
 # environment
 HOMEDRIVE = C:
 # environment
@@ -187,7 +187,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\User\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\7a324ef7-1.86.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\7a324ef7-1.86.2-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -208,8 +208,7 @@ PROCESSOR_REVISION = a502
 CC = c++
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 165 Stepping 2, GenuineIntel
-# variable set hash-tab 
-le stats:
+# variable set hash-table stats:
 # Load=99/1024=10%, Rehash=0, Collisions=14/132=11%
 
 # Pattern-specific Variable Values
@@ -218,10 +217,10 @@ le stats:
 
 # Directories
 
-# . (key c:/Users/User/Desktop/brabus, mtime 1708005063): 18 files, no impossibilities.
-# Commands (key c:/Users/User/Desktop/brabus/Commands, mtime 1707921091): 16 files, no impossibilities.
+# . (key c:/Users/User/Desktop/boobs, mtime 1708255694): 18 files, no impossibilities.
+# Commands (key c:/Users/User/Desktop/boobs/Commands, mtime 1708256040): 19 files, no impossibilities.
 
-# 34 files, no impossibilities in 2 directories.
+# 37 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -237,7 +236,7 @@ obj/%.o: %.cpp
 obj/Commands/Invite.o: Commands/Invite.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Invite'
-#  Last modified 2024-02-15 17:51:01
+#  Last modified 2024-02-18 15:28:10
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -248,7 +247,7 @@ obj/Commands/Invite.o: Commands/Invite.cpp
 obj/Commands/Ping.o: Commands/Ping.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Ping'
-#  Last modified 2024-02-15 17:51:02
+#  Last modified 2024-02-18 15:28:13
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -259,7 +258,7 @@ obj/Commands/Ping.o: Commands/Ping.cpp
 obj/Commands/Pong.o: Commands/Pong.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Pong'
-#  Last modified 2024-02-15 17:51:02
+#  Last modified 2024-02-18 15:28:13
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -272,41 +271,48 @@ client:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 37):
+#  recipe to execute (from 'Makefile', line 38):
 		nc localhost 6667
 
 # Not a target:
 Commands/Invite.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:31:31
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Commands/Quit.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 13:19:56
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Parsing.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 13:19:56
+#  Last modified 2024-02-18 13:31:16
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Commands/Cap.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2024-02-18 13:47:31
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Commands/Nick.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:46:59
+#  Last modified 2024-02-18 15:19:37
 #  File has been updated.
 #  Successfully updated.
 
 obj/Commands/Commands.o: Commands/Commands.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Commands'
-#  Last modified 2024-02-15 17:51:00
+#  Last modified 2024-02-18 15:28:10
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -317,7 +323,18 @@ obj/Commands/Commands.o: Commands/Commands.cpp
 obj/main.o: main.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2024-02-15 17:51:00
+#  Last modified 2024-02-18 15:28:09
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 17):
+			@mkdir -p $(OBJ_DIR)
+			@mkdir -p $(OBJ_DIR)/Commands
+			@$(CC) $(CFLAGS) -o $@ -c $<
+
+obj/Commands/Notice.o: Commands/Notice.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Commands/Notice'
+#  Last modified 2024-02-18 15:28:12
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -328,14 +345,14 @@ obj/main.o: main.cpp
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 13:19:56
+#  Last modified 2024-02-18 13:45:37
 #  File has been updated.
 #  Successfully updated.
 
 obj/Parsing.o: Parsing.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Parsing'
-#  Last modified 2024-02-15 17:50:59
+#  Last modified 2024-02-18 15:28:07
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -346,14 +363,14 @@ obj/Parsing.o: Parsing.cpp
 # Not a target:
 Channel.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:31:15
+#  Last modified 2024-02-18 13:45:37
 #  File has been updated.
 #  Successfully updated.
 
 obj/Commands/Join.o: Commands/Join.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Join'
-#  Last modified 2024-02-15 17:51:01
+#  Last modified 2024-02-18 15:28:10
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -364,7 +381,7 @@ obj/Commands/Join.o: Commands/Join.cpp
 obj/Commands/Topic.o: Commands/Topic.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Topic'
-#  Last modified 2024-02-15 17:51:03
+#  Last modified 2024-02-18 15:28:14
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -377,21 +394,21 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 26):
+#  recipe to execute (from 'Makefile', line 27):
 			@rm -rf $(OBJ_DIR)
 			@$(RM) $(OBJS)
 
 # Not a target:
 User.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:31:31
+#  Last modified 2024-02-18 13:45:37
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Commands/Join.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-15 17:16:11
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
@@ -400,7 +417,7 @@ server: all
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 35):
+#  recipe to execute (from 'Makefile', line 36):
 			./$(NAME) 6667 asd
 
 re: fclean all
@@ -412,14 +429,14 @@ re: fclean all
 # Not a target:
 Commands/Pass.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:31:15
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 obj/Commands/Nick.o: Commands/Nick.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Nick'
-#  Last modified 2024-02-15 17:51:01
+#  Last modified 2024-02-18 15:28:11
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -430,14 +447,25 @@ obj/Commands/Nick.o: Commands/Nick.cpp
 # Not a target:
 Commands/Commands.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:47:13
+#  Last modified 2024-02-18 15:25:06
 #  File has been updated.
 #  Successfully updated.
+
+obj/Commands/Cap.o: Commands/Cap.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Commands/Cap'
+#  Last modified 2024-02-18 15:28:09
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 17):
+			@mkdir -p $(OBJ_DIR)
+			@mkdir -p $(OBJ_DIR)/Commands
+			@$(CC) $(CFLAGS) -o $@ -c $<
 
 obj/Commands/Mode.o: Commands/Mode.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Mode'
-#  Last modified 2024-02-15 17:51:01
+#  Last modified 2024-02-18 15:28:11
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -448,7 +476,7 @@ obj/Commands/Mode.o: Commands/Mode.cpp
 # Not a target:
 Server.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-15 17:15:13
+#  Last modified 2024-02-18 15:12:23
 #  File has been updated.
 #  Successfully updated.
 
@@ -471,13 +499,13 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 30):
+#  recipe to execute (from 'Makefile', line 31):
 			@$(RM) $(NAME)
 
 obj/Commands/Quit.o: Commands/Quit.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Quit'
-#  Last modified 2024-02-15 17:51:03
+#  Last modified 2024-02-18 15:28:14
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -488,21 +516,21 @@ obj/Commands/Quit.o: Commands/Quit.cpp
 # Not a target:
 Commands/PrivMsg.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 17:21:15
+#  Last modified 2024-02-18 15:28:04
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 17:21:15
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 obj/Commands/User.o: Commands/User.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/User'
-#  Last modified 2024-02-15 17:51:03
+#  Last modified 2024-02-18 15:28:14
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -510,10 +538,17 @@ obj/Commands/User.o: Commands/User.cpp
 			@mkdir -p $(OBJ_DIR)/Commands
 			@$(CC) $(CFLAGS) -o $@ -c $<
 
+# Not a target:
+Commands/Notice.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2024-02-18 13:31:16
+#  File has been updated.
+#  Successfully updated.
+
 obj/Commands/Pass.o: Commands/Pass.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Pass'
-#  Last modified 2024-02-15 17:51:02
+#  Last modified 2024-02-18 15:28:12
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -524,7 +559,7 @@ obj/Commands/Pass.o: Commands/Pass.cpp
 obj/Commands/PrivMsg.o: Commands/PrivMsg.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/PrivMsg'
-#  Last modified 2024-02-15 17:51:02
+#  Last modified 2024-02-18 15:28:13
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -535,21 +570,21 @@ obj/Commands/PrivMsg.o: Commands/PrivMsg.cpp
 # Not a target:
 Commands/User.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-15 17:15:54
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Commands/Ping.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:31:15
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 obj/Server.o: Server.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Server'
-#  Last modified 2024-02-15 17:50:59
+#  Last modified 2024-02-18 15:28:08
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -560,30 +595,31 @@ obj/Server.o: Server.cpp
 # Not a target:
 Commands/Pong.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:31:15
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Commands/Topic.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 13:19:56
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
-ircserv: obj/Channel.o obj/Parsing.o obj/Server.o obj/User.o obj/main.o obj/Commands/Commands.o obj/Commands/Invite.o obj/Commands/Join.o obj/Commands/Kick.o obj/Commands/Mode.o obj/Commands/Nick.o obj/Commands/Pass.o obj/Commands/Ping.o obj/Commands/Pong.o obj/Commands/PrivMsg.o obj/Commands/Quit.o obj/Commands/Topic.o obj/Commands/User.o
+ircserv: obj/Channel.o obj/Parsing.o obj/Server.o obj/User.o obj/main.o obj/Commands/Cap.o obj/Commands/Commands.o obj/Commands/Invite.o obj/Commands/Join.o obj/Commands/Kick.o obj/Commands/Mode.o obj/Commands/Nick.o obj/Commands/Notice.o obj/Commands/Pass.o obj/Commands/Ping.o obj/Commands/Pong.o obj/Commands/PrivMsg.o obj/Commands/Quit.o obj/Commands/Topic.o obj/Commands/User.o
 #  Implicit rule search has not been done.
-#  Last modified 2024-02-15 17:51:03
+#  Last modified 2024-02-18 15:28:15
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 22):
 			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 			@echo "\x1b[32m$(NAME) is compiled! 🤠🐱\x1b[32m"
+			@echo "\x1b[32mINGAAAAAAA, CHANGE THE STANDART!!!!!!!! 🤠🤠🤠🤠🤠🤠\x1b[32m"
 
 obj/Channel.o: Channel.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Channel'
-#  Last modified 2024-02-15 17:50:59
+#  Last modified 2024-02-18 15:28:07
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -594,7 +630,7 @@ obj/Channel.o: Channel.cpp
 obj/User.o: User.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'User'
-#  Last modified 2024-02-15 17:51:00
+#  Last modified 2024-02-18 15:28:09
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -605,14 +641,14 @@ obj/User.o: User.cpp
 # Not a target:
 Commands/Kick.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:31:31
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 obj/Commands/Kick.o: Commands/Kick.cpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'Commands/Kick'
-#  Last modified 2024-02-15 17:51:01
+#  Last modified 2024-02-18 15:28:11
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 17):
@@ -628,24 +664,24 @@ obj/Commands/Kick.o: Commands/Kick.cpp
 # Not a target:
 Commands/Mode.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2024-02-14 18:31:31
+#  Last modified 2024-02-18 13:31:16
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=47/1024=5%, Rehash=0, Collisions=5/142=4%
+# Load=51/1024=5%, Rehash=0, Collisions=5/154=3%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 91 / storage = 1162 B / avg = 12 B
-# current buf: size = 8162 B / used = 1162 B / count = 91 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 100 / storage = 1298 B / avg = 12 B
+# current buf: size = 8162 B / used = 1298 B / count = 100 / avg = 12 B
 
-# strcache performance: lookups = 143 / hit rate = 36%
+# strcache performance: lookups = 154 / hit rate = 35%
 # hash-table stats:
-# Load=91/8192=1%, Rehash=0, Collisions=2/143=1%
-# Finished Make data base on Thu Feb 15 19:00:39 2024
+# Load=100/8192=1%, Rehash=0, Collisions=2/154=1%
+# Finished Make data base on Sun Feb 18 15:57:19 2024
 
  

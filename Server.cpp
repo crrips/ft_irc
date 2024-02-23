@@ -108,11 +108,13 @@ void    Server::InitTheServer()
     if (_FileDescriptor == -1)
     {
         std::cout<<"Error: Socket failed!"<<std::endl;
+        return;
     }
 
     if (setsockopt(_FileDescriptor, SOL_SOCKET,SO_REUSEADDR, &opt, sizeof(opt)))
     {
         std::cout<<"Error: Setsockopt failed!"<<std::endl;
+        return;
     }
     memset(&_Address, 0, sizeof(_Address));
     _Address.sin_family = AF_INET;
@@ -122,10 +124,12 @@ void    Server::InitTheServer()
     if (bind(_FileDescriptor, (struct sockaddr*)&_Address, sizeof(_Address)) < 0)
     {
         std::cout<<"Error: Bind failed!"<<std::endl;
+        return;
     }
     if (listen(_FileDescriptor, 100) < 0)
     {
         std::cout<<"Error: Listening failed!"<<std::endl;
+        return;
     }
     fcntl(_FileDescriptor, F_SETFL, O_NONBLOCK);
 }

@@ -43,6 +43,7 @@ class Commands
         void Notice(User *user, std::vector<std::string> obj);
         void Pong(User *user, std::vector<std::string> obj);
         void Ping(User *user, std::vector<std::string> obj);
+        void Cap(User *user, std::vector<std::string> obj);
 };
 
 #endif
