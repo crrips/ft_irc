@@ -1,37 +1,57 @@
 #ifndef BOT_HPP
 #define BOT_HPP
 
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sstream>
-#include <fstream>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <sys/time.h>
-#include <sys/wait.h>
-#include <sys/uiocb.h>
+# include <sstream>
+# include <iostream>
+# include <fstream>
+# include <string>
+# include <stdio.h>
+# include <sys/types.h>
+# include <sys/socket.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <netdb.h>
+# include <sys/uio.h>
+# include <sys/time.h>
+# include <sys/wait.h>
+# include <fcntl.h>
 
 
 class Bot
 {
     private:
+        std::string _Host;
         int _Port;
         std::string _Psw;
         std::string _Nick;
-        std::string _User;
-        std::string _Host;
-    public:
-        Bot(int port, std::string const &psw);
-        ~Bot();
-};
+        std::string _BUser;
         
+        int _Socket;
+        struct sockaddr_in _Address;
 
-#endif;
+        int _BytesWritten;
+        int _BytesRead;
+    
+    public:
+    
+        Bot(std::string host, int port, std::string psw, std::string nick);
+        ~Bot();
+
+        int ConnectTheBot();
+        int InitTheBot();
+        void RunTheBot();
+        std::string Hello();
+        void SendMsg(std::string const &msg);
+        int Handle(std::string msg);
+        std::string Parsing(std::string &data, std::string *msg);
+
+        std::string ltrim(const std::string &s, const std::string &trimed);
+        std::string rtrim(const std::string &s, const std::string &trimed);
+        std::string trim(const std::string &s, const std::string &trimed);
+        std::string ToString(int num);
+};   
+
+#endif

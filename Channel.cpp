@@ -244,14 +244,22 @@ void Channel::join(User *user)
 
 void Channel::part(User *user)
 {
-    for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); ++it)
+    // for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); ++it)
+    // {
+    //     if (*it == user)
+    //     {
+    //         _users.erase(it);
+    //         break;
+    //     }
+    // }
+    std::vector<User *>::iterator tmp;
+    for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); it++)
     {
+        (*it)->SendMsg(RPL_PART(user->getMessage(), _name));
         if (*it == user)
-        {
-            _users.erase(it);
-            break;
-        }
+            tmp = it;
     }
+    _users.erase(tmp);
 }
 
 void Channel::kick(User *user, std::string const &msg)
@@ -265,6 +273,8 @@ void Channel::kick(User *user, std::string const &msg)
     //     }
     // }
     // user->SendMsg(msg);
+
+
     std::vector<User *>::iterator tmp;
     for (std::vector<User *>::iterator it = _users.begin(); it != _users.end(); it++)
     {
