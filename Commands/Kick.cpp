@@ -44,7 +44,7 @@ void Commands::Kick(User *user, std::vector<std::string> obj)
         return ;
     }
 
-    channel->sendMsg(":" + user->getNickname() + " KICK " + channelName + " " + nickname + " :" + reason);
+    channel->sendMsg(user, ":" + user->getNickname() + " KICK " + channelName + " " + nickname + " :" + reason);
     channel->unsetInvite(target);
     channel->kick(target, reason);
     target->LeaveTheChannel(channel);

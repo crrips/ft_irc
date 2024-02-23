@@ -75,7 +75,7 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     }
 
     user->SendMsg(RPL_ENDOFNAMES(user->getNickname(), channelName));
-    channel->sendMsg(":" + user->getNickname() + " JOIN " + channelName);                   // RECHECK THIS
+    channel->sendMsg(user, ":" + user->getNickname() + " JOIN " + channelName);             // RECHECK THIS
     if (channel->getTopic() != "")                                                          // RECHECK THIS
         user->SendMsg(RPL_TOPIC(user->getNickname(), channelName, channel->getTopic()));    // RECHECK THIS
     channel->unsetInvite(user);

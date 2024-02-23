@@ -40,6 +40,6 @@ void Commands::PrivMsg(User *user, std::vector<std::string> obj)
             user->ReplyMsg(ERR_NOTONCHANNEL(user->getNickname(), targetUser));
             return ;
         }
-        channel->sendMsg(RPL_MSG(user->getNickname(), "PRIVMSG", targetUser, message));
+        channel->sendMsg(user, RPL_MSG(user->getNickname(), "PRIVMSG", targetUser, message));
     }
 }
