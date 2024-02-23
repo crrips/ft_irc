@@ -2,6 +2,11 @@
 
 void Commands::Join(User *user, std::vector<std::string> obj)
 {
+    if (!user->getPass())
+    {
+        user->ReplyMsg(ERR_NOTREGISTERED(user->getNickname()));
+        return ;
+    }
     if (obj.empty())
     {
         user->ReplyMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "JOIN"));
