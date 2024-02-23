@@ -44,6 +44,8 @@ class Commands
         void Pong(User *user, std::vector<std::string> obj);
         void Ping(User *user, std::vector<std::string> obj);
         void Cap(User *user, std::vector<std::string> obj);
+        void Who(User *user, std::vector<std::string> obj);
+        void Part(User *user, std::vector<std::string> obj);
 };
 
 #endif

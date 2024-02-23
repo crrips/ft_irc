@@ -51,7 +51,7 @@ class Server
         
         void NewUser();
         void DeleteUser(iterator &it);
-        void InitTheServer();
+        int InitTheServer();
         void RunTheServer();
 
         bool TheBuffer(iterator &it);

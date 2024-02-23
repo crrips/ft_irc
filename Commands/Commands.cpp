@@ -80,6 +80,10 @@ void Commands::Handle(User *user, std::vector<std::string> obj, std::string cons
         Notice(user, obj);
     else if(!cmd.compare("CAP"))
         Cap(user, obj);
+    else if(!cmd.compare("WHO"))
+       Who(user, obj);
+    else if(!cmd.compare("PART"))
+        Part(user, obj);
     else
         user->ReplyMsg(ERR_UNKNOWNCOMMAND(user->getNickname(), cmd));
 }
