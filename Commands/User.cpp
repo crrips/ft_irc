@@ -12,6 +12,14 @@ void Commands::UserCmd(User *user, std::vector<std::string> obj)
         user->ReplyMsg(ERR_ALREADYREGISTERED(user->getNickname()));
         return ;
     }
+    for (int i = 0; i < 4; i++)
+    {
+        if (obj[i][0] == '#' || obj[i][0] == '&' || obj[i][0] == '+' || obj[i][0] == '!')
+        {
+            user->ReplyMsg(ERR_ERRONEUSNICKNAME(user->getNickname(), obj[i]));
+            return ;
+        }
+    }
     user->setUserName(obj[0]);
     user->setHostName(obj[1]);
     user->setNickname(obj[2]);

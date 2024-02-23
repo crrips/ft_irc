@@ -30,7 +30,7 @@ void Commands::Notice(User *user, std::vector<std::string> obj)
             user->SendMsg(ERR_NOTONCHANNEL(user->getNickname(), target));
             return ;
         }
-        channel->sendMsg(RPL_NOTICE(user->getNickname(), target, message));
+        channel->sendMsg(user, RPL_NOTICE(user->getNickname(), target, message));
         return ;
     }
     else

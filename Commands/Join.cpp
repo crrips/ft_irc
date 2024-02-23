@@ -2,6 +2,11 @@
 
 void Commands::Join(User *user, std::vector<std::string> obj)
 {
+    if (!user->getPass())
+    {
+        user->ReplyMsg(ERR_NOTREGISTERED(user->getNickname()));
+        return ;
+    }
     if (obj.empty())
     {
         user->ReplyMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "JOIN"));
@@ -15,6 +20,9 @@ void Commands::Join(User *user, std::vector<std::string> obj)
 
     std::string channelName = obj[0];
     std::string channelPass = (obj.size() == 2) ? obj[1] : "";
+
+    for (int i = 2; i < (int)obj.size(); i++)
+        channelPass += " " + obj[i];
 
     if (channelName[0] != '#' && channelName[0] != '&')
     {
@@ -75,5 +83,8 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     }
 
     user->SendMsg(RPL_ENDOFNAMES(user->getNickname(), channelName));
+    channel->sendMsg(user, ":" + user->getNickname() + " JOIN " + channelName);             // RECHECK THIS
+    if (channel->getTopic() != "")                                                          // RECHECK THIS
+        user->SendMsg(RPL_TOPIC(user->getNickname(), channelName, channel->getTopic()));    // RECHECK THIS
     channel->unsetInvite(user);
 }

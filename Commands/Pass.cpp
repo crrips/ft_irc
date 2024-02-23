@@ -21,6 +21,4 @@ void Commands::Pass(User *user, std::vector<std::string> obj)
     user->setPass();
     //user->ReplyMsg(RPL_WELCOME(user->getNickname()));
     user->Registration();
-
-
 }

@@ -2,7 +2,7 @@
 
 void Commands::Nick(User *user, std::vector<std::string> obj)
 {
-      if (obj.empty())
+    if (obj.empty())
     {
         user->ReplyMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "NICK"));
         return;
