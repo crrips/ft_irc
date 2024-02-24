@@ -34,6 +34,7 @@ int Bot::InitTheBot()
     }
     _Address.sin_family = AF_INET;
     _Address.sin_port = htons(_Port);
+    std::cout<<"Host: "<< _Host <<std::endl;
 
     if(inet_pton(AF_INET, _Host.c_str(), &_Address.sin_addr) <= 0) 
     { 
@@ -61,8 +62,8 @@ void Bot::RunTheBot()
         {
             fcntl(_Socket, F_SETFL, O_NONBLOCK);
             SendMsg("PASS " + _Psw);
-            SendMsg("NICK " + _Nick);
             SendMsg("USER " + _Nick + " " + ToString(_Port) + " " + _Host + " :Noname");
+            SendMsg("NICK " + _Nick);
             
             while (1)
             {
