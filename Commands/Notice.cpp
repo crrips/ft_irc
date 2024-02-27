@@ -31,6 +31,7 @@ void Commands::Notice(User *user, std::vector<std::string> obj)
             return ;
         }
         channel->sendMsg(user, RPL_NOTICE(user->getNickname(), target, message));
+        user->SendMsg(RPL_NOTICE(user->getNickname(), target, message));
         return ;
     }
     else

@@ -60,10 +60,17 @@ void Bot::RunTheBot()
 
     char buffer[5000];
     std::string data;
+    gettimeofday(&_Start, NULL);
 
     
     while (1)
     {
+        gettimeofday(&_End, NULL);
+        if (_End.tv_sec - _Start.tv_sec > 10)
+        {
+            std::cout<<"Error: Couldn't connect to the server!"<<std::endl;
+            break;
+        }
         if (connect(_Socket, (struct sockaddr *)&_Address, sizeof(_Address)) != -1)
         {
             fcntl(_Socket, F_SETFL, O_NONBLOCK);

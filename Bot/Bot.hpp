@@ -35,6 +35,9 @@ class Bot
 
         int _BytesWritten;
         int _BytesRead;
+
+        struct timeval _Start;
+        struct timeval _End;
     
     public:
     

@@ -25,6 +25,7 @@ void Commands::PrivMsg(User *user, std::vector<std::string> obj)
             return;
         }
         channel->sendMsg(user, message);
+        user->SendMsg(RPL_MSG(user->getMessage(), "PRIVMSG", target, message));
         return;
     }
 

@@ -14,6 +14,8 @@ int main(int argc, char **argv)
     try
     {
         Parsing::IsValidNumeric(argv[1]);
+        if (!*argv[2])
+            throw std::runtime_error("Error: Empty string!");
     }
     catch(const std::exception& e)
     {
