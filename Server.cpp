@@ -172,7 +172,7 @@ void    Server::RunTheServer()
                     FD_CLR(it->first, &wr);
                     while (!(it->second->_Buffer).empty())
                     {
-                        std::cout << "Buffer: " << it->second->_Buffer << std::endl;
+                        //std::cout << "Buffer: " << it->second->_Buffer << std::endl;
                         _Commands->ToUse(it->second);
                     }
                     it->second->_Buffer.clear();

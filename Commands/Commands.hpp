@@ -46,7 +46,6 @@ class Commands
         void Cap(User *user, std::vector<std::string> obj);
         void Who(User *user, std::vector<std::string> obj);
         void Part(User *user, std::vector<std::string> obj);
-        void Transfer(User *user, std::vector<std::string> obj);
 };
 
 #endif

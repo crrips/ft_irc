@@ -2,44 +2,37 @@
 
 void Commands::PrivMsg(User *user, std::vector<std::string> obj)
 {
-    if (obj.size() < 2)
+    if (obj.empty())
     {
-        user->ReplyMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "PRIVMSG"));
-        return ;
+        user->ReplyMsg(ERR_NOTEXTTOSEND(user->getNickname()));
+        return;
     }
-
-    std::string targetUser = obj[0];
-    std::string message = obj[1];
-
-    if (message[0] == ':')
-        message.erase(0, 1);
-
-    for (size_t i = 2; i < obj.size(); i++)
-        message += " " + obj[i];
-
-    if (targetUser[0] != '#' && targetUser[0] != '&')
+    std::string target = obj[0];
+    std::string message = obj[1].substr(obj[1][0] == ':' ? 1 : 0);
+    for (size_t i = 2; i < obj.size(); ++i)
+        message.append(" " + obj[i]);
+    if (target[0] == '#' || target[0] == '&')
     {
-        User *target = _Server->getUser(targetUser);
-        if (!target)
-        {
-            user->ReplyMsg(ERR_NOSUCHNICK(user->getNickname(), targetUser));
-            return ;
-        }
-        target->SendMsg(":" + user->getNickname() + " PRIVMSG " + targetUser + " :" + message);
-    }
-    else
-    {
-        Channel *channel = _Server->getChannel(targetUser);
+        Channel *channel = _Server->getChannel(target);
         if (!channel)
         {
-            user->ReplyMsg(ERR_NOSUCHCHANNEL(user->getNickname(), targetUser));
-            return ;
+            user->ReplyMsg(ERR_NOSUCHNICK(user->getNickname(), target));
+            return;
         }
         if (!channel->isExist(user))
         {
-            user->ReplyMsg(ERR_NOTONCHANNEL(user->getNickname(), targetUser));
-            return ;
+            user->ReplyMsg(ERR_CANNOTSENDTOCHAN(user->getNickname(), target));
+            return;
         }
-        channel->sendMsg(user, RPL_MSG(user->getNickname(), "PRIVMSG", targetUser, message));
+        channel->sendMsg(user, message);
+        return;
     }
+
+    User *new_user = _Server->getUser(target);
+    if (!new_user)
+    {
+        user->ReplyMsg(ERR_NOSUCHNICK(user->getNickname(), target));
+        return;
+    }
+    new_user->SendMsg(RPL_MSG(user->getMessage(), "PRIVMSG", target, message));
 }

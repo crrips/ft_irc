@@ -60,7 +60,7 @@ void User::setHostName( const std::string hostname)
     _HostName = hostname;
 }
 
-void User::setNickname(const std::string nickname)
+void User::setNickname(std::string nickname)
 {
     _Nickname = nickname;
 }
