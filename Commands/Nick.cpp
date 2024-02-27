@@ -7,24 +7,25 @@ void Commands::Nick(User *user, std::vector<std::string> obj)
         user->ReplyMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "NICK"));
         return;
     }
-    std::string nick = obj[0];
-    if (nick[0] == '#' || nick[0] == '&' || nick[0] == '+' || nick[0] == '-' || nick[0] == '!')
+    if (!user->getPass())
     {
-        user->ReplyMsg(ERR_ERRONEUSNICKNAME(user->getNickname(), nick));
-        return ;
-    }
-    if (!Parsing::IsValidNick(nick))
-    {
-        user->ReplyMsg(ERR_ERRONEUSNICKNAME(user->getNickname(), nick));
+        user->ReplyMsg(ERR_ALREADYREGISTERED(user->getNickname()));
         return;
     }
-    User *new_user = _Server->getUser(nick);
+    std::string nickname = obj[0];
+    if (!Parsing::IsValidNick(nickname))
+    {
+        user->ReplyMsg(ERR_ERRONEUSNICKNAME(user->getNickname(), nickname));
+        return;
+    }
+    User *new_user = _Server->getUser(nickname);
     if (new_user && new_user != user)
     {
-        user->ReplyMsg(ERR_NICKNAMEINUSE(user->getNickname(), nick));
+        user->ReplyMsg(ERR_NICKNAMEINUSE(user->getNickname(), nickname));
         return;
     }
-    user->setNickname(nick);
+    _Server->setUser(user, nickname, user->getFd());
+    user->setNickname(nickname);
     if (!user->IsRegistered())
         user->Registration();
 }

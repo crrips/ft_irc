@@ -53,6 +53,8 @@ public:
     void JoinTheChannel(Channel *channel);  
     void LeaveTheChannel(Channel *channel); 
     void DeleteUser(int del);
+
+    void Init(std::string const &username, std::string const &name);
 };
 
 #endif

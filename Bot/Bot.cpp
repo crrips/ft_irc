@@ -117,6 +117,8 @@ int Bot::Handle(std::string msg)
     std::string text;
     std::string command = Parsing(msg, &text);
 
+    std::cout << "Command: " << command << std::endl;
+
     if (_BUser.empty() || command.empty())
         return 0;
     else if (command == "SAYHELLO")

@@ -139,3 +139,9 @@ void User::DeleteUser(int del)
         (*it)->part(this);
     _Channel.clear();
 }
+
+void User::Init(std::string const &username, std::string const &name)
+{
+    _UserName = username;
+    _Name = name;
+}
