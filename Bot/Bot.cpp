@@ -1,4 +1,8 @@
 #include "Bot.hpp"
+#include <fstream>
+#include <fcntl.h>
+#include <vector>
+
 
 Bot::Bot(std::string host, int port, std::string psw, std::string nick) : _Host(host), _Port(port), _Psw(psw), _Nick(nick)
 {
@@ -34,7 +38,8 @@ int Bot::InitTheBot()
     }
     _Address.sin_family = AF_INET;
     _Address.sin_port = htons(_Port);
-    std::cout<<"Host: "<< _Host <<std::endl;
+    std::cout<<"Connecting to the server..." <<std::endl;
+    
 
     if(inet_pton(AF_INET, _Host.c_str(), &_Address.sin_addr) <= 0) 
     { 
@@ -55,6 +60,7 @@ void Bot::RunTheBot()
 
     char buffer[5000];
     std::string data;
+
     
     while (1)
     {
@@ -65,8 +71,12 @@ void Bot::RunTheBot()
             SendMsg("USER " + _Nick + " " + ToString(_Port) + " " + _Host + " :Noname");
             SendMsg("NICK " + _Nick);
             
+            std::cout<<"Hello, my name is "<< _Nick <<std::endl;
+            std::cout<<"Please, choose one of the commands above and type it in the User chat"<<std::endl;
+            std::cout<<"Commands: SAYHELLO, PYTHON, TRANSFER, HELP, EXIT"<<std::endl;
             while (1)
             {
+
                 memset(&buffer, 0, sizeof(buffer));
                 int value = recv(_Socket, (char*)&buffer, sizeof(buffer), 0);
                 if (value == 0)
@@ -112,21 +122,69 @@ std::string Bot::Hello()
     return "Hello, my name is " + _Nick + "\r\n";
 }
 
+void Bot::Transfer(std::vector<std::string> obj)
+{
+    std::string input = obj[0];
+
+    for (size_t i = 1; i < obj.size(); i++)
+        input += " " + obj[i];
+
+    std::fstream file;
+    file.open(input);
+    if (!file.is_open())
+    {
+        return ;
+    }
+    std::string fileContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    file.close();
+
+    std::ofstream transfer;
+    transfer.open("transfer.txt");
+    transfer << fileContent;
+    transfer.close();
+}
+
+std::string Bot::Help()
+{
+    return "Type one of these commands in the chat: SAYHELLO, EXIT, PYTHON, TRANSFER\r\n";
+}
+
+std::string Bot::PythonTheCat()
+{
+    std::ofstream file;
+    file.open("PythonTheCat.txt");
+    file << "meow" << std::endl;
+    file <<  "  |\\__/,|   (`\\" << std::endl;
+    file << "_.|o o  |_   ) )"<< std::endl;
+    file << "-(((---(((--------"<< std::endl;
+    file.close();
+    return "Python is ready to see you, check the file PythonTheCat.txt\r\n";
+}
+
 int Bot::Handle(std::string msg)
 {
     std::string text;
     std::string command = Parsing(msg, &text);
 
-    std::cout << "Command: " << command << std::endl;
-
     if (_BUser.empty() || command.empty())
         return 0;
     else if (command == "SAYHELLO")
         text = Hello();
+    else if (command == "HELP")
+        text = Help();
+    else if (command == "PYTHON")
+        text = PythonTheCat();
     else if (command == "EXIT")
         return 1;
+    else if(command.substr(0, 8) == "TRANSFER")
+    {   
+        text = command.substr(9, std::string::npos);
+        std::vector<std::string> obj;
+        obj.push_back(text);
+        Transfer(obj);
+    }
     else
-        text = "Wrong input\r\n";
+        text = "Error: Wrong input\r\n";
     if (!text.empty())
         SendMsg("PRIVMSG " + _BUser + " " + text);
     return 0;

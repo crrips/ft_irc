@@ -40,7 +40,7 @@ public:
     bool isQuit() const;
 
     void setHostName(const std::string hostname);
-    void setNickname(const std::string nickname);
+    void setNickname(std::string nickname);
     void setUserName(const std::string username);
     void setName(const std::string name);
     void setRegistration(bool reg);

@@ -18,6 +18,7 @@
 # include <sys/time.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include <vector>
 
 
 class Bot
@@ -43,7 +44,6 @@ class Bot
         int ConnectTheBot();
         int InitTheBot();
         void RunTheBot();
-        std::string Hello();
         void SendMsg(std::string const &msg);
         int Handle(std::string msg);
         std::string Parsing(std::string &data, std::string *msg);
@@ -52,6 +52,13 @@ class Bot
         std::string rtrim(const std::string &s, const std::string &trimed);
         std::string trim(const std::string &s, const std::string &trimed);
         std::string ToString(int num);
+        
+
+        void Transfer(std::vector<std::string> obj);
+        std::string Help();
+        std::string Hello();
+        std::string PythonTheCat();
+
 };   
 
 #endif

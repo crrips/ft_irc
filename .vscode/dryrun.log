@@ -33,7 +33,6 @@ c++ -Wall -Wextra -Werror -std=c++11 -I. -o obj/Commands/Kick.o -c Commands/Kick
 mkdir -p obj
 mkdir -p obj/Commands
 c++ -Wall -Wextra -Werror -std=c++11 -I. -o obj/Commands/Mode.o -c Commands/Mode.cpp
- 
 mkdir -p obj
 mkdir -p obj/Commands
 c++ -Wall -Wextra -Werror -std=c++11 -I. -o obj/Commands/Nick.o -c Commands/Nick.cpp
@@ -46,14 +45,12 @@ c++ -Wall -Wextra -Werror -std=c++11 -I. -o obj/Commands/Part.o -c Commands/Part
 mkdir -p obj
 mkdir -p obj/Commands
 c++ -Wall -Wextra -Werror -std=c++11 -I. -o obj/Commands/Pass.o -c Commands/Pass.cpp
- 
 mkdir -p obj
 mkdir -p obj/Commands
 c++ -Wall -Wextra -Werror -std=c++11 -I. -o obj/Commands/Ping.o -c Commands/Ping.cpp
 mkdir -p obj
 mkdir -p obj/Commands
 c++ -Wall -Wextra -Werror -std=c++11 -I. -o obj/Commands/Pong.o -c Commands/Pong.cpp
- 
 mkdir -p obj
 mkdir -p obj/Commands
 c++ -Wall -Wextra -Werror -std=c++11 -I. -o obj/Commands/PrivMsg.o -c Commands/PrivMsg.cpp
