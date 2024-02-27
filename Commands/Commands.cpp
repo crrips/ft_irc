@@ -84,6 +84,8 @@ void Commands::Handle(User *user, std::vector<std::string> obj, std::string cons
        Who(user, obj);
     else if(!cmd.compare("PART"))
         Part(user, obj);
+    else if(!cmd.compare("TRANSFER"))
+        Transfer(user, obj);
     else
         user->ReplyMsg(ERR_UNKNOWNCOMMAND(user->getNickname(), cmd));
 }

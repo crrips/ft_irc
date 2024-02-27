@@ -71,7 +71,10 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     user->SendMsg(":" + user->getNickname() + " JOIN " + channelName);
 
     if (channel->getUsers().size() == 1)
-        user->SendMsg(":" + user->getNickname() + " " + channelName + " :you are the new admin");
+    {
+        // new admin message
+        user->SendMsg(":" + user->getNickname() + " MODE " + channelName + " +o " + user->getNickname());
+    }
 
     std::vector<User *> users = channel->getUsers();
     for (std::vector<User *>::iterator it = users.begin(); it != users.end(); ++it)
@@ -83,8 +86,8 @@ void Commands::Join(User *user, std::vector<std::string> obj)
     }
 
     user->SendMsg(RPL_ENDOFNAMES(user->getNickname(), channelName));
-    channel->sendMsg(user, ":" + user->getNickname() + " JOIN " + channelName);             // RECHECK THIS
-    if (channel->getTopic() != "")                                                          // RECHECK THIS
-        user->SendMsg(RPL_TOPIC(user->getNickname(), channelName, channel->getTopic()));    // RECHECK THIS
+    channel->sendMsg(user, ":" + user->getNickname() + " JOIN " + channelName);
+    if (channel->getTopic() != "")
+        user->SendMsg(RPL_TOPIC(user->getNickname(), channelName, channel->getTopic()));
     channel->unsetInvite(user);
 }

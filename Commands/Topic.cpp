@@ -18,11 +18,11 @@ void Commands::Topic(User *user, std::vector<std::string> obj)
         user->SendMsg(ERR_NOTONCHANNEL(user->getNickname(), obj[0]));
         return ;
     }
-    if (channel->getTopic().empty())
-    {
-        user->SendMsg(RPL_NOTOPIC(user->getNickname(), channel->getName()));
-        return ;
-    }
+    // if (channel->getTopic().empty())
+    // {
+    //     user->SendMsg(RPL_NOTOPIC(user->getNickname(), channel->getName()));
+    //     return ;
+    // }
     if (!channel->isAdmin(user) && !channel->isOperator(user))
     {
         user->SendMsg(ERR_CHANOPRIVSNEEDED(user->getNickname(), channel->getName()));

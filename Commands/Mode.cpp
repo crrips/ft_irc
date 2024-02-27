@@ -2,11 +2,8 @@
 
 void Commands::Mode(User *user, std::vector<std::string> obj)
 {
-    if (obj.size() < 2)
-    {
-        user->SendMsg(ERR_NEEDMOREPARAMS(user->getNickname(), "MODE"));
+    if (obj.size() < 2 || obj[1] == user->getNickname())
         return;
-    }
 
     std::string channelName = obj[0];
     std::string mode = obj[1];

@@ -25,7 +25,7 @@ void Commands::PrivMsg(User *user, std::vector<std::string> obj)
             user->ReplyMsg(ERR_NOSUCHNICK(user->getNickname(), targetUser));
             return ;
         }
-        target->ReplyMsg(RPL_MSG(user->getNickname(), "PRIVMSG", targetUser, message));
+        target->SendMsg(":" + user->getNickname() + " PRIVMSG " + targetUser + " :" + message);
     }
     else
     {

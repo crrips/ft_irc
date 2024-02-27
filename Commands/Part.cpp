@@ -21,4 +21,6 @@ void Commands::Part(User *user, std::vector<std::string> obj)
     }
     newChannel->part(user);
     user->LeaveTheChannel(newChannel);
+    newChannel->sendMsg(user, ":" + user->getNickname() + " PART " + channel);
+    user->SendMsg(":" + user->getNickname() + " PART " + channel);
 }

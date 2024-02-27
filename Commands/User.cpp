@@ -14,7 +14,7 @@ void Commands::UserCmd(User *user, std::vector<std::string> obj)
     }
     for (int i = 0; i < 4; i++)
     {
-        if (obj[i][0] == '#' || obj[i][0] == '&' || obj[i][0] == '+' || obj[i][0] == '!')
+        if (obj[i][0] == '#' || obj[i][0] == '&' || obj[i][0] == '+' || obj[i][0] == '-' || obj[i][0] == '!')
         {
             user->ReplyMsg(ERR_ERRONEUSNICKNAME(user->getNickname(), obj[i]));
             return ;
