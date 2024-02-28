@@ -188,5 +188,7 @@ int Bot::Handle(std::string msg)
     }
     else
         text = "Error: Wrong Input\r\n";
+    if (!text.empty())
+        SendMsg("PRIVMSG " + _BUser + " " + text);
     return 0;
 }
