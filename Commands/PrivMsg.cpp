@@ -24,8 +24,7 @@ void Commands::PrivMsg(User *user, std::vector<std::string> obj)
             user->ReplyMsg(ERR_CANNOTSENDTOCHAN(user->getNickname(), target));
             return;
         }
-        channel->sendMsg(user, message);
-        user->SendMsg(RPL_MSG(user->getMessage(), "PRIVMSG", target, message));
+        channel->sendMsg(user, RPL_MSG(user->getMessage(), "PRIVMSG", target, message));
         return;
     }
 

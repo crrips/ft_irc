@@ -126,7 +126,6 @@ void User::LeaveTheChannel(Channel *channel)
         if(*it == channel)
         {
             it = _Channel.erase(it);
-            // delete channel; // xz nado ili net
             break;
         }
     }

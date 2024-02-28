@@ -39,7 +39,6 @@ void Commands::ToUse(User *user)
         arguments.push_back(buf);
     if(!name.compare("PASS"))
         Pass(user, arguments);
-        //UserCmd(user, arguments);
     if (!user->IsRegistered() && command && command->authRequired())
     {
         user->ReplyMsg(ERR_NOTREGISTERED(user->getNickname()));
@@ -53,7 +52,6 @@ void Commands::ToUse(User *user)
 void Commands::Handle(User *user, std::vector<std::string> obj, std::string const cmd)
 {
     if(!cmd.compare("PASS"));
-        //Pass(user, obj);
     else if(!cmd.compare("USER"))
         UserCmd(user, obj);
     else if(!cmd.compare("JOIN"))

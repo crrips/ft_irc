@@ -1,8 +1,4 @@
 #include "Bot.hpp"
-#include <fstream>
-#include <fcntl.h>
-#include <vector>
-
 
 Bot::Bot(std::string host, int port, std::string psw, std::string nick) : _Host(host), _Port(port), _Psw(psw), _Nick(nick)
 {
@@ -191,8 +187,6 @@ int Bot::Handle(std::string msg)
         Transfer(obj);
     }
     else
-        text = "Error: Wrong input\r\n";
-    if (!text.empty())
-        SendMsg("PRIVMSG " + _BUser + " " + text);
+        text = "Error: Wrong Input\r\n";
     return 0;
 }

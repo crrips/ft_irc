@@ -84,19 +84,9 @@ User *Server::getUser(std::string const &nickname)
 void Server::setUser(User *user, std::string const &newNickname, int fd)
 {
     std::string oldNickname = user->getNickname();
-    // if (!oldNickname.empty())
-    // {
-    //     for (iterator it = _User.begin(); it != _User.end(); ++it)
-    //     {
-    //         if (it->second != user)
-    //             it->second->SendMsg(":" + oldNickname + " NICK " + newNickname);
-    //     }
-    // }
     _NewUser.erase(oldNickname);
     _NewUser.erase(newNickname);
     _NewUser.insert(std::make_pair(newNickname, fd));
-    // _NewUser[newNickname] = fd;
-    // user->setNickname(newNickname);
 }
 
 // Making, running the server: excepting messages, users and etc
@@ -225,7 +215,6 @@ void Server::NewUser()
     int _Socket = accept(_FileDescriptor, (struct sockaddr *)&_ClientAddress, &_AddLen);
     if (_Socket == -1)
     {
-        //std::cout << "Error: Can't accept a new connection!" << std::endl;
         return;
     }
     fcntl(_Socket, F_SETFL, O_NONBLOCK);
@@ -243,8 +232,6 @@ void Server::NewUser()
 void    Server::DeleteUser(iterator &it)
 {
     std::cout << "\x1b[32mUser disconnected: \x1b[32m" << it->second->getMessage() << std::endl;
-
-    // user leaves the channel: add a function in User class
     it->second->LeaveTheChannel(0);
     close(it->first);
     _NewUser.erase(it->second->getNickname());

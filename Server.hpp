@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-//#include <vector> //not sure about this one
 #include <map>
 #include <unistd.h>
 #include <fcntl.h>
@@ -30,8 +29,6 @@ class Server
         std::map<std::string, int>      _NewUser;
         std::map<std::string, Channel*>	_Channel;
         typedef std::map<int, User*>::iterator  iterator;
-        //std::vector<User *>          _User;
-        //std::vector<int>      _NewUser;
         Commands *_Commands;
     public:
         
@@ -51,7 +48,7 @@ class Server
         
         void NewUser();
         void DeleteUser(iterator &it);
-        int InitTheServer();
+        int  InitTheServer();
         void RunTheServer();
 
         bool TheBuffer(iterator &it);

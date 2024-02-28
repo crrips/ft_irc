@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include <sys/socket.h> //works only with linux
+#include <sys/socket.h>
 #include "Channel.hpp"
 #include <vector>
 #include "Parsing.hpp"
@@ -37,7 +37,6 @@ public:
     std::string getName() const;
     std::string getMessage() const;
     int getFd() const;
-    bool isQuit() const;
 
     void setHostName(const std::string hostname);
     void setNickname(std::string nickname);
